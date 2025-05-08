@@ -1,0 +1,105 @@
+\section{Restklasser og Lagranges Teorem}
+I dette kapittelet kommer vi til å anta at $H\leq G$.
+
+\textbf{Mål}:
+\begin{enumerate}
+	\item Vise at dersom $\abs{G}<\infty$ så vil $\abs{H}\mid\abs{G}$.
+	\item Etter hvert: Lage en ny gruppe $G/H$ for visse undergrupper $H$.
+\end{enumerate}
+
+\begin{definition}{Restklasse}{}
+	La $a\in G$. Da er $Ha=\cb{ha\mid h\in H}$ den \textbf{høyre restklassen} til $H$ mhp. $a$, og
+	$aH=\cb{ah\mid h\in H}$ den \textbf{venstre restklassen} til $H$ mhp. $a$.
+
+	Dersom $G$ er abelsk så er $Ha=aH\ \forall a\in G$.
+\end{definition}
+
+\textbf{Eksempler}:
+
+\begin{enumerate}
+	\item La $G=\mathbb{Z}$ og $H=5 \mathbb{Z}=\cb{\dots,-10,-5,0,5,10,\dots}$. Da finnes det
+	      fem restklasser:
+	      \begin{align}
+		      0 + 5 \mathbb{Z} & = 5 \mathbb{Z}                    \\
+		      1 + 5 \mathbb{Z} & = \cb{\dots, -9, -4, 1, 6, \dots} \\
+		      2 + 5 \mathbb{Z} & = \cb{\dots, -8, -3, 2, 7, \dots} \\
+		      3 + 5 \mathbb{Z} & = \cb{\dots, -7, -2, 3, 8, \dots} \\
+		      4 + 5 \mathbb{Z} & = \cb{\dots, -6, -1, 4, 9, \dots} \\
+		      5 + 5 \mathbb{Z} & = 5 \mathbb{Z}                    \\
+		      6 + 5 \mathbb{Z} & = 1+5 \mathbb{Z}
+	      \end{align}
+	\item La $U_4=\cb{1,-1,i,-i}$ med multiplikasjon og $H={-1,1}$. Da har vi følgende
+	      restklasser:
+	      \begin{align}
+		      H\cdot 1 & = H\cdot(-1) = H          \\
+		      H\cdot i & = H\cdot(-i) = \cb{-i, i} 
+	      \end{align}
+        Så det finnes totalt to restklasser
+      \item La $G=S_3=\cb{\rho_0, \rho_1, \rho_2, \mu_1, \mu_2, \mu_3}$ og $H=\cb{\rho_0, \mu_1}$.
+        Da ser vi at:
+        \begin{align}
+          H\rho_1 &= \cb{\rho_1, \mu_2} \\
+          \rho_1 H &= \cb{\rho_1, \mu_3}
+        \end{align}
+        Så vi ser at $H\rho_1\neq\rho_1 H$. 
+\end{enumerate}
+
+\textbf{Merk (for både høyre og venstre restklasser)}:
+\begin{enumerate}
+  \item $a\in Ha$ fordi $ea=a$
+  \item $Ha=H\iff a\in H$. 
+
+    Dersom $Ha=H$ så er $a\in H$ fra punkt 1. Dersom $a\in H$ så er $Ha\subseteq H$ siden
+    $H$ er lukket. La nå $h\in H$. Da kan vi skrive $h=(ha^{-1})a$, men $ha^{-1}\in H$, så
+    $h\in Ha$. \qed
+  \item $Ha\cap Hb\neq\emptyset\iff Ha=Hb$. Her er $\impliedby$-retningen triviell. 
+
+    Hvis $Ha\cap Hb\neq\emptyset$ så finnes $h_1,h_2\in H$ slik at $h_1a=h_2b$. Dette gir oss
+    at $a=h_1^{-1}h_2b$. Dermed har vi at for $h\in H$ så er $ha=(hh_1^{-1}h_2)b\in Hb$.
+    Siden vi valgte $h$ vilkårlig så må da $Ha\subseteq Hb$. Vi kan bruke et tilsvarende
+    argument for å see at $Hb\subseteq Ha$, noe som betyr at $Hb=Ha$. \qed
+  \item $Ha=Hb\iff ab^{-1}\in H\iff ba^{-1}\in H$. 
+
+    Vi ser at $Ha=Hb\iff Hab^{-1}=Hbb^{-1}\iff Hab^{-1}=H\iff ab^{-1}\in H$, hvor vi i det siste
+    steget brukte resultatet fra punkt 2.
+  \item $Ha=Hb\iff b\in Ha$ fra punkt 1 og 4.
+  \item Definer $f:H\ra Ha$ ved $f(h)=ha$. Dette er en bijeksjon, så $\abs{H}=\abs{Ha}$.
+\end{enumerate}
+
+\begin{theorem*}{Lagrange}{}
+Hvis $\abs{G}<\infty$ og $H\leq G$ så vil $\abs{H}$ være en divisor i $\abs{G}$.
+\end{theorem*}
+
+\textbf{Bevis}:
+Fra resultatene over og siden $G$ er endelig så må det eksistere elementer 
+$a_1, a_2, \dots, a_t\in G$ slik at 
+\begin{enumerate}
+  \item $G=Ha_1\cup Ha_2\cup \dots\cup Ha_t$
+  \item $Ha_i\cap Ha_j=\emptyset$ for alle $i\neq j$ (siden alle restklassene er disjunkte eller 
+    fullstendig overlappende)
+\end{enumerate}
+Så siden $\abs{Ha_i}=\abs{H}$ så må $\abs{G}=t\abs{H}$. \qed
+
+\begin{theorem*}{(Korollar) 10.11}{}
+  Anta $\abs{G}=p$ hvor $p$ er et primtall. Da har $G$ kun to undergrupper, $\cb{e}$ og $G$ selv.
+
+  Dersom $a\neq e$ så vil $\inner{a}=G$. Spesielt er $G$ syklisk og $G$ er isomorf med
+  $\mathbb{Z}_p$.
+\end{theorem*}
+
+\textbf{Eksempel} (Vår 2012, oppgave 1): 
+La $G$ være en gruppe som inneholder minst ett element av orden 3 og minst ett av orden 4. Hva er
+den minste ordenen en slik gruppe kan ha og gi et eksempel.
+
+Siden 3 må dele ordenen og 4 må dele ordenen til gruppen så ma $3\cdot 4$ også dele ordenen,
+så ordenen må minst være 12. Et eksempel på en slik gruppe er $\mathbb{Z}_{12}$.
+
+\begin{definition}{Indeks}{}
+  Vi sier at \textbf{indeksen} til $H$ i $G$ er $(G:H)=$ antall ulike høyre restklasser til $H$
+  (som er det samme som antall venstre restklasser).
+\end{definition}
+
+\textbf{Eksempel}: $(\mathbb{Z}:5 \mathbb{Z})=5$.
+
+\textbf{Merk}: Når $\abs{G}<\infty$ så er $(G:H)=\frac{\abs{G}}{\abs{H}}$.
+

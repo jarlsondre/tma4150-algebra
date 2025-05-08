@@ -1,0 +1,132 @@
+\section{Baner, Sykler og $A_n$}
+
+\begin{definition}{Banen til et element}{}
+  La $A$ være en mengde, $\sigma\in S_A$ og $a\in A$. Da sier vi at \textbf{banen} til $a$ er
+  \begin{align}
+    \cb{\sigma^n(a)\mid n\in \mathbb{Z}}\subset A
+  \end{align}
+\end{definition}
+
+\textbf{Eksempel}:
+La
+\begin{align}
+  \sigma=\begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6 \\ 5 & 1 & 6 & 4 & 2 & 3\end{pmatrix}\in S_6
+\end{align}
+Da ser vi at 
+\begin{align}
+  \sigma(1)&=5 \\
+  \sigma^2(1)&=2 \\
+  \sigma^3(1)&=1 \\
+  \sigma^4(1)&=5 
+\end{align}
+noe som betyr at $\cb{1, 2, 5}$ er banen til 1, 2 og 5. Videre ser vi at 
+\begin{align}
+  \sigma(3)&=6 \\
+  \sigma^2(3)&=3
+\end{align}
+som betyr at $\cb{3, 6}$ er banen til 3 og til 6. Til slutt så ser vi at
+\begin{align}
+  \sigma(4)=4
+\end{align}
+som betyr at $\cb{4}$ er banen til 4. 
+
+\begin{definition}{Sykel}{}
+  $\sigma\in S_n$ er en \textbf{sykel} hvis det maksimalt er en bane med mer enn et element. 
+\end{definition}
+
+\textbf{Eksempel}: Se på 
+$\tau=\begin{pmatrix}1 & 2 & 3 & 4 & 5 6 \\ 1 & 2 & 6 & 4 & 5 & 3\end{pmatrix}\in S_6$. Denne
+permutasjonen har banene
+\begin{align}
+  \cb{1}, \cb{2}, \cb{4}, \cb{5}, \cb{3, 6}
+\end{align}
+Dermed er $\tau$ en sykel, mens $\sigma$ fra over ikke er det.
+
+\textbf{Merk}:
+\begin{enumerate}
+  \item Vi bruker notasjonen $\tau=\nb{3, 6}$ for $\tau$ definert som over
+  \item La $\mu=(1,5,2)$ og $\tau=(3,6)$ i $S_6$. Altså at
+    \begin{align}
+      \mu &= \begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6 \\ 5 & 1 & 3 & 4 & 2 & 6\end{pmatrix} \\
+      \tau &= \begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6 \\ 1 & 2 & 6 & 4 & 5 & 3\end{pmatrix} 
+    \end{align}
+    Da er $\mu\tau=\sigma=\tau\mu$ (vis)
+\end{enumerate}
+
+\begin{theorem*}{9.8}{}
+  Ethvert element i $S_n$ er et produkt av sykler. 
+\end{theorem*}
+
+\begin{definition}{Transposisjon}{}
+  En sykel av lengde 2 er en \textbf{transposisjon}.
+\end{definition}
+
+\textbf{Merk}: La $(a_1, a_2, \ldots, a_t)$ være en sykel i $S_n$. Da er
+\begin{align}
+  (a_1, a_2, \ldots, a_t)=(a_1, a_t)(a_1, a_{t-1})\cdots(a_1,a_2)
+\end{align}
+
+\textbf{Eksempel}: I $S_6$ så er $(1, 5, 2)=(1,2)(1,5)$ og i $S_{39}$ så er 
+$(2,8,13,38)=(2,38)(2,13)(2,8)$
+
+\begin{theorem*}{(Korollar) 9.12}{}
+  Ethvert element i $S_n$ er et produkt av transposisjoner.
+\end{theorem*}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+  \item $\sigma$ fra eksempelet tidligere kan skrives som: 
+    $\sigma=(1,5,2)(3,6)=(1,2)(1,5)(3,6)$
+  \item $(a,b)(a,b)$ blir til identiteten i $S_n$. F.eks. så har vi at $(1,2)(1,2)=\text{id}$.
+  \item For $\sigma$ i punkt 1 så kan vi skrive
+    \begin{align}
+      \sigma=(1,2)(1,5)(3,6)=(1,2)(2,4)(2,4)(1,5)(3,6)
+    \end{align}
+    siden $(2,4)(2,4)$ blir identiteten. 
+\end{enumerate}
+
+\begin{theorem*}{9.15}{}
+  Et element i $S_n$ kan ikke både skrives som et produkt av et odde antall transposisjoner og
+  som et produkt av et partall antall transposisjoner.
+\end{theorem*}
+
+\begin{definition}{Like og Odde}{}
+  Vi sier at $\sigma\in S_n$ er \textbf{like} dersom $\sigma$ er et produkt av et partall antall
+  transposisjoner og \textbf{odde} dersom $\sigma$ er et produkt av et odde antall transposisjoner.
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+  \item $\sigma$ fra tidligere er odde siden $\sigma=(1,6)(1,5)(3,6)$.
+  \item Identitetselementet i $S_n$ er like fordi det kan skrives som $(1,2)(1,2)$.
+\end{enumerate}
+
+\begin{theorem*}{9.20}{}
+  For $n\geq 2$ la $A_n=\cb{\sigma\in S_n\mid\sigma\text{ er like}}$. Da er $A_n\leq S_n$ med
+  $\abs{A_n}=\frac{\abs{S_n}}{2}=\frac{n!}{2}$.
+\end{theorem*}
+
+\textbf{Bevis}: Først så har vi at $A_n\neq\emptyset$ siden $n\geq 2$.
+
+La 
+\begin{align}
+  \sigma=&(a_1,b_1)\cdots(a_{2s},b_{2s})\in A_n \\
+  \tau=&(c_1,d_1)\cdots(c_{2t},d_{2t})\in A_n \\
+\end{align}
+Da har vi at
+\begin{align}
+  \sigma\tau^{-1}=\sb{(a_1,b_1)\cdots(a_{2s},b_{2s})}(c_{2t},d_{2t})\cdots(c_1,d_1)
+\end{align}
+som betyr at $\sigma\tau^{-1}$ kan skrives som et produkt av et partalls antall transposisjoner,
+som igjen betyr at $\sigma\tau^{-1}$ må være like. Dermed er $\sigma\tau^{-1}\in A_n$, som
+betyr at $A_n$ er en gyldig undergruppe av $S_n$. \qed
+
+La $B_n=\cb{\sigma\in S_n\mid\sigma\text{ er odde}}$.
+
+\begin{theorem*}{(Korollar) 9.12}{}
+  $S_n=A_n\cup B_n$ 
+\end{theorem*}
+
+\begin{theorem*}{9.15}{}
+  $A_n\cap B_n=\emptyset$ og $\abs{S_n}=\abs{A_n}+\abs{B_n}$. 
+\end{theorem*}

@@ -1,0 +1,109 @@
+\section{Homomorfier}
+La $G$ og $H$ være grupper.
+
+\begin{definition}{Homomorfi}{}
+	En funksjon $\phi:G\ra H$ er en (gruppe-)\textbf{homomorfi} dersom
+	\begin{align}
+		\phi(g_1g_2)=\phi(g_1)\phi(g_2)\ \forall g_1,g_2\in G
+	\end{align}
+\end{definition}
+
+\textbf{Eksempler}
+\begin{enumerate}
+	\item La $e_H$ være identiteten i $H$ og sett $\phi(g)=e_H$ for alle $g\in G$. Da har vi at
+	      \begin{align}
+		      \phi(g_1g_2)=e_H=e_He_H=\phi(g_1)\phi(g_2)
+	      \end{align}
+	\item Fikser $a\in \mathbb{Z}$ og definer $\phi_a: \mathbb{Z}\ra \mathbb{Z}$ ved
+	      $n \mapsto an$. Da har vi at
+	      \begin{align}
+		      \phi_a(m+n)=a(m+n)=am+an=\phi_a(m)+\phi_a(n)
+	      \end{align}
+	      Vis at enhver homomorfi $\phi: \mathbb{Z}\ra \mathbb{Z}$ er på formen $\phi_a$ for
+	      $a\in \mathbb{Z}$. Når er $\phi_a$ en isomorfi?
+	\item Definer $\phi: \text{GL}(n,\mathbb{R})\ra \mathbb{R}^*$ ved $\phi(M)=\det M$. Da har
+	      vi at
+	      \begin{align}
+		      \phi(MN)=\det(MN)=\det(M)\det(N)=\phi(M)\phi(N)
+	      \end{align}
+	      som betyr at $\phi$ er en homomorfi.
+	\item Definer $\phi:S_n\ra S_{n+1}$ ved
+	      \begin{align}
+		      \sigma=\begin{pmatrix}1 & \dots & n \\ \sigma_1 & \dots & \sigma_n\end{pmatrix}
+		      \mapsto
+		      \begin{pmatrix}1 & \dots & n & n+1 \\ \sigma_1 & \dots & \sigma_1 & n+1\end{pmatrix}
+	      \end{align}
+	      Vis at $\phi(\sigma\tau)=\phi(\sigma)\phi(\tau)$
+	\item Se på $(\mathbb{R}, +)$ og $(U, \cdot)$ hvor $U=\cb{z\in\mathbb{C}\mid\abs{z}=1}$.
+	      \begin{align}
+		      \phi: \mathbb{R} & \ra U          \\
+		      r                & \mapsto e^{ir}
+	      \end{align}
+	      Da har vi at $\phi(r+s)=e^{i(r+s)}=e^{ir}e^{is}=\phi(r)\phi(s)$.
+\end{enumerate}
+
+
+\begin{theorem*}{13.12}{}
+	La $\phi:G\ra H$ være en homomorfi. Da har vi at følgende holder:
+	\begin{enumerate}
+		\item Dersom $e\in G$ er identitetselementer så er $\phi(e)$ identitetselementet i $H$
+		\item $\phi(g^{-1})=\phi(g)^{-1}\ \forall g\in G$
+		\item $K\leq G\implies \phi[K]=\cb{\phi(k)\mid k\in K}\leq H$
+		\item $L\leq H\implies \phi^{-1}[L]=\cb{g\in G\mid \phi(g)\in L}\leq G$
+	\end{enumerate}
+	Med andre ord impliserer homomorfier en slags strukturbevaring.
+\end{theorem*}
+
+\textbf{Bevis}:
+\begin{enumerate}
+	\item Vi har at $\phi(e)=\phi(ee)=\phi(e)\phi(e)$. Gang nå med $\phi(e)^{-1}$ på begge sider.
+	      Da får du $\phi(e)^{-1}\phi(e)=\phi(e)^{-1}\phi(e)\phi(e)\implies e_H=\phi(e)$. \qed
+	\item Vi ser at
+	      \begin{align}
+		      e_H=\phi(e)=\phi(gg^{-1})=\phi(g)\phi(g^{-1})\implies \phi(g^{-1})=\phi(g)^{-1}\qed
+	      \end{align}
+\end{enumerate}
+
+\begin{definition}{Kjernen}{}
+	La $e_H$ være identitetselementet i $H$. Da er kjernen til $\phi$ definert som:
+	\begin{align}
+		\ker \phi = \cb{g\in G\mid \phi(g)=e_H}
+	\end{align}
+\end{definition}
+
+\textbf{Merk}: $\ker \phi \leq G$. Dette kommer fra punkt 4 i teoremet over siden det inverse
+bildet til $e_H$ vil være kjernen til $\phi$.
+
+\textbf{Eksempler}: (Her bruker vi de samme eksemplene som over)
+\begin{enumerate}
+	\item $\ker\phi=G$
+	\item $\ker\phi_a=\begin{cases}\cb{0} & a \neq 0 \\ \mathbb{Z} & a=0 \end{cases}$
+	\item $\ker\phi = \text{SL}(n, \mathbb{R}) \leq \text{GL}(n, \mathbb{R})$
+	\item $\ker\phi = \cb{\sigma\in S_n\mid \phi(\sigma)=\text{id}_{n+1}}=\cb{e}$
+	\item Vi har at:
+	      \begin{align}
+		      \ker\phi & =\cb{a\in \mathbb{R}\mid \phi(a)=1}    \\
+		               & =\cb{a\in \mathbb{R}\mid e^{ir}=1}     \\
+		               & =\cb{n\cdot 2\pi \mid n\in \mathbb{Z}}
+	      \end{align}
+\end{enumerate}
+
+\begin{theorem*}{(Korollar) 13.18}{}
+	For en homomorfi $\phi:G\ra H$ så har vi at $\phi$ er injektiv hvis og bare hvis
+	$\ker\phi=\cb{e}$.
+\end{theorem*}
+
+\textbf{Bevis}: La oss først anta at $\phi$ er injektiv og at $g\in G$ med $\phi(g)=e_H$. Siden
+$\phi(e)=e_H$ og $\phi$ er injektiv, så må da $g=e_H$.
+
+Anta nå at $\phi$ ikke er injektiv. Da må det finnes $g_1, g_2\in G$ slik at $g_1\neq g_2$
+men $\phi(g_1)=\phi(g_2)$. Da har vi at
+\begin{align}
+	e_H & =\phi(g_1)\phi(g_1)^{-1} \\
+	    & =\phi(g_2)\phi(g_1)^{-1} \\
+      &= \phi(g_2)\phi(g_1^{-1}) \\
+      &= \phi(g_2g_1^{-1}).
+\end{align}
+
+Legg merke til at $g_2g_1^{-1}\neq e$ siden inverser er unike. Dermed har vi vist at 
+$\ker\phi\neq \cb{e}$, som var det vi ville vise. \qed

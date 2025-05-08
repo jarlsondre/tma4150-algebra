@@ -1,0 +1,165 @@
+\section{Sylowteori}
+Da vi lærte om Lagrange, så vi at dersom $G$ er en endelig gruppe, og $H\leq G$ en undergruppe,
+så ville $\abs{H}\mid \abs{G}$. Man kan også stille seg det motsatte spørsmålet: Dersom 
+$d\mid \abs{G}$, finnes det en undergruppe $H\leq G$ slik at $\abs{H} = d$?
+\begin{itemize}
+  \item Dersom $G$ er abelsk, ja
+  \item Dersom $G$ ikke er abelsk, ikke nødvendigvis
+\end{itemize}
+Som et eksempel, ta $A_4 = \cb{\sigma\in S_4\mid \sigma \text{ er like}}\leq S_4$. Da ser vi at
+$\abs{A_4} = \frac{\abs{S_4}}{2} = \frac{4!}{2} = 12$. Men, det finnes ingen undergruppe 
+$H\leq A_4$ slik at $\abs{H} = 6$. 
+
+\textbf{Mål}: Vise at når $\abs{G} = p_1^{n_1}\cdots p_t^{n_t}$, hvor $p_i$ er primtall og
+$n_i\in \mathbb{N}\cup \cb{0}$, så finnes det $H \leq G$ med 
+$\abs{H} = p_i^{m}\ \forall i,0\leq m\leq n_i$. 
+
+\begin{definition}{$p$-gruppe}{}
+  La $p$ være et primtall. Da er en gruppe $G$ en $p$-gruppe hvis hvert element i $G$ har som
+  orden en potens av $p$. 
+\end{definition}
+
+\textbf{Delmål}: $G$ er en $p$-gruppe $\iff \abs{G} = p^t$.
+
+\begin{theorem*}{36.1}{}
+  La $G$ være en gruppe med $\abs{G} = p^t$ for et primtall $p$ og en potens $t \in \mathbb{N}$, 
+  la $X$ være en endelig $G$-mengde og sett 
+  \begin{align}
+    X_G = \bigcap_{g\in G}X_g = \cb{x\in X\mid gx=x\forall g\in G}.
+  \end{align}
+  Da er
+  \begin{align}
+    \abs{X} \equiv \abs{X_G} \pmod{p},
+  \end{align}
+  dvs. $p\mid (\abs{X}-\abs{X_G})$.
+\end{theorem*}
+
+\textbf{Bevis}: Vi vet fra før at for $x, y\in X$ så er enten $Gx=Gy$ eller $Gx\cap Gy=\emptyset$.
+Merk nå at dersom $\abs{Gx} = 1\iff x\in X_G$. Siden $X$ er endelig så må det finnes 
+$x_1, \dots, x_n\in X$ slik at $X = Gx_1\cup \cdots \cup Gx_n$ og $Gx_i \cap Gx_j = \emptyset$ for
+$i\neq j$. La nå $y_1, \dots, y_s \in \cb{x_1, \dots, x_n}$ være de elementene som har at
+$\abs{Gy_i} = 1$ og $z_1, \dots, z_t\in \cb{x_1, \dots, x_n}$ med $\abs{Gz_i} \geq 2$. Da har vi
+at $X_G = \cb{y_1, \dots, y_2}$ og 
+\begin{align}
+  X &= G_{y_1}\cup \dots \cup G_{y_s}\cup G_{z_1}\cup\dots\cup G_{z_t} \\
+    &= X_G\cup G_{z_1}\cup\dots\cup G_{z_1}.
+\end{align}
+Dette betyr at $\abs{X}=\abs{X_G} + \sum_{i=1}^t \abs{G_{z_i}}$. Fra Teorem 16.16 så er 
+$\abs{G_{z_i}}=(G:G_{z_i})=\frac{\abs{G}}{\abs{G_{z_i}}}$. Siden $\abs{G} = p^t$ og 
+$\abs{G_{z_i}}\geq 2$ så må $p \mid \abs{G_{z_i}}$, som også betyr at $p$ må dele
+$\sum_{i=1}^t \abs{G_{z_i}} = \abs{X}-\abs{X_G}$, som var det vi ville vise. \qed
+
+
+\begin{theorem*}{36.3 (Cauchy)}{}
+  Anta at $p$ er et primtall, $G$ en gruppe og at $p\mid \abs{G}$. Da har $G$ minst ett element
+  – og dermed også en undergruppe – av orden $p$. 
+\end{theorem*}
+
+\textbf{Bevis}: Sett $X=\cb{(g_1,\dots,g_p)\in G\times\dots\times G\mid g_1g_2\dots g_p=e}$. Da kan
+vi velge $g_1, \dots, g_{p-1}$ fritt i $G$, for så å sette $g_p=(g_1\dots g_{p-1})^{-1}$. Altså
+vil $\abs{X}=\abs{G}^{p-1}$ og dermed $p\mid \abs{X}$. 
+
+Se nå på $\sigma=(1, 2, 3, \dots, p)\in S_p$. Vi har at ordenen til $\sigma$ er $p$, så 
+$H = \inner{\sigma}=\cb{e,\sigma,\dots,\sigma^{p-1}}\leq S_p$ har $p$ elementer. Gruppen $H$ vil
+virke på $X$. La $x=(g_1,\dots,g_p)\in X$ og definer $\sigma$ slik at 
+$\sigma x = (g_2, \dots, g_{p-1}, g_1)$. Da er $\sigma x \in X$, fordi 
+$g_1 = (g_2\dots g_{p-1})^{-1}$, altså at $g_2\dots g_{p-1}g_1=e$. Ved utvidelse så virker $H$ på
+$X$. Siden $\abs{H}=p$ så sier Teorem 36.1 at $\abs{X}\equiv \abs{X_H} \pmod{p}$ og siden 
+$p\mid \abs{X}$ så må $p\mid \abs{X_H}$.
+\begin{align}
+  X_H &= \cb{x\in X\mid hx = x\ \forall h\in H} \\
+      &= \cb{(g_1,\dots,g_p)\in X\mid \sigma x = x} \\
+      &= \cb{(g_1,\dots,g_p)\in X\mid g_1=g2=\cdots=g_p}\\
+      &= \cb{(g_1,\dots,g_p)\in X\mid g^p = e}\\
+\end{align}
+Siden $(e,\dots,e)\in X_H$ så er $\abs{X_H}\geq 1$ og videre siden $p\mid \abs{X_H}$ og $p\geq 2$
+så må $\abs{X_H}\geq 2$. Altså har vi at det finnes en $g\in G$ slik at $g^p = e$ hvor $g\neq e$. 
+Siden $p$ er et primtall så må dermed $\abs{\inner{g}}=p$. \qed
+
+\begin{theorem*}{(Korollar) 36.4}{}
+  Anta at $p$ er et primtall og at $G$ er en endelig gruppe. Da har vi at 
+  \begin{align}
+    G\text{ er en }p\text{-gruppe} \iff \abs{G}=p^t
+  \end{align}
+\end{theorem*}
+\textbf{Bevis}: Øving 8. Høyre til venstre kommer fra Lagrange og venstre til høyre kommer fra å 
+se på negasjonen av begge sider. 
+
+\begin{definition}{Sylow-p-undergruppe}{}
+  La $G$ være en endelig gruppe og $p$ et primtall med $p\mid \abs{G}$. Skriv nå $\abs{G}=pm$
+  hvor $p\nmid m$. Da sier vi at en \textbf{Sylow-p-undergruppe} av $G$ er en undergruppe av
+  orden $p^t$. 
+\end{definition}
+
+\begin{theorem*}{Sylowteoremene}{}
+  La $G$ være en endelig gruppe og $p$ et primtall med $p\mid \abs{G}$. Da holder følgende:
+
+  \begin{itemize}
+    \item \textbf{Første Sylowteorem}: Skriv $\abs{G} = p^tm$ hvor $p\nmid m$. Da har vi at
+      \begin{enumerate}[label=\alph*)]
+        \item $\forall 1\leq i\leq t\ \exists H\leq G$ med $\abs{H}=p^t$
+        \item Hvis $H\leq G$ og $\abs{H} = p^i$ for $1\leq i\leq t-1$ så $\exists K \leq G$ med
+          $\abs{K}=p^{i+1}$ og slik at $H$ er normal i $K$
+      \end{enumerate}
+    \item \textbf{Andre Sylowteorem}: Hvis $P, P'$ er Sylow-p-undergrupper så finnes det en 
+      $g\in G$ slik at $P'=gPg^{-1}$.
+    \item \textbf{Tredje Sylowteorem}: La $n_p$ være antall Sylow-p-undergrupper. Da har vi at
+      \begin{enumerate}[label=\alph*)]
+        \item $n_p \mid \abs{G}$
+        \item $n_p \equiv 1 \pmod{p}$
+      \end{enumerate}
+  \end{itemize}
+\end{theorem*}
+
+\textbf{Merk}: For andre Sylowteorem så har vi sett at for en gruppe $G$ og $H\leq G$ så er 
+$gHg^{-1} = \cb{ghg^{-1}\mid h\in H}\leq G$. Videre så har vi også at 
+$P=gP'g^{-1}\iff P=g^{-1}P'g$. 
+
+\textbf{Bevis (for andre Sylowteorem)}: La $X$ være mengden av alle restklasser til $P$ i $G$,
+altså at $X = \cb{gP\mid g\in G}$. Da virker $P'$ på $X$ med $h(gP)=(hg)P\ \forall h\in P'$. 
+Siden $\abs{P'}=p^t$ så gir Teorem 36.1 oss at $\abs{X}\equiv \abs{X_{P'}} \pmod{p}$ hvor
+$X_{P'}=\cb{x\in X\mid hx = x\ \forall h\in P'}$. Vi har at 
+$\abs{X}=(G:P)=\frac{\abs{G}}{\abs{P}}$, så $p\nmid \abs{X}$ og siden 
+$\abs{X}\equiv\abs{X_{P'}}\pmod{p}$ så vil da $p\nmid \abs{X_{P'}}$. Det betyr at 
+$\abs{X_{P'}}\neq 0$, dvs $X_{P'}\neq \emptyset$. Da må det finnes en $x\in X$ slik at
+$hx=x\ \forall h\in P'$, dvs. det finnes en restklasse $gP$ med $h(gP)=gP\ \forall h\in P'$, 
+dvs. $(hg)P=gP$, dvs. $(g^{-1}hg)P=P\ \forall h\in P'$, dvs. $g^{-1}hg\in P\ \forall h\in P$,
+dvs. $g^{-1}P'g\leq P$. Men, $\abs{g^{-1}P'g}=\abs{P'}$, så $g^{-1}P'g=P$. \qed 
+
+\textbf{Eksempel (Eksamen Vår 2023, Oppg. 5)}:
+
+La $G$ være en gruppe slik at $\abs{G}=p^tm$ for et primtall $p$, $t\geq 1$ og $1 < m < p$. Bruk
+et Sylowteorem til å vise at $G$ ikke er simpel.
+
+Må altså vise at det finnes en normal undergruppe $\cb{e}<H<G$. La $n_p$ være antall 
+Sylow-p-undergrupper. Fra tredje Sylowteorem så må $n_p \mid p^tm$ og $n_p \equiv 1 \pmod{p}$.
+Siden $p \nmid 1$ så må $p \nmid n_p$ også. Videre så må også $n_p \mid p^tm$ (fra tredje 
+Sylowteorem), så vi må ha at $n_p \mid m$. 
+
+Siden $m < p$ så må $n_p < p$, men da må $n_p = 1$, fordi $n_p \equiv 1 \pmod{p}$, som igjen
+betyr at $G$ har en unik Sylow-p-undergruppe $P$, og denne må ha orden $p^t$. Siden $m > 1$ og
+$t \geq 1$ så må altså $P$ være slik at $\cb{e}<P<G$. Videre så må $P$ være normal fra andre
+Sylowteorem. Dermed er ikke $G$ simpel, som var det vi ville vise. \qed
+
+\textbf{Eksempel (Eksamen Vår 2013, Oppg. 5b)}:
+
+Vis at dersom $\abs{G} = 105$ så er ikke $G$ simpel.
+
+Vi har at $105 = 3\cdot 7\cdot 5$. La nå $n_5$ være antall Sylow-5-undergrupper og $n_7$ være
+antall Sylow-7-undergrupper. Fra tredje Sylowteorem har vi da at
+\begin{itemize}
+  \item $n_5 \mid \abs{G}$ og $n_5 \equiv 1 \pmod{5}$
+  \item $n_7 \mid \abs{G}$ og $n_7 \equiv 1 \pmod{7}$
+\end{itemize}
+La oss nå se på alle divisorne til 105: $\cb{1, 3, 5, 7, 15, 21, 35, 105}$. Fra dette og utsagnene
+over så ser vi at $n_5\in \cb{1, 21}$ og $n_7\in \cb{1, 15}$. Vi vil nå vise at enten $n_7$ eller 
+$n_5$ må være 1.
+
+La $H, H' \leq G$ med $\abs{H}=\abs{H'} = 5$ være forskjellige Sylow-5-undergrupper. Da vil 
+$H\cap H' = \cb{e}$ fra Lagrange. Dermed har vi at 21 forskjellige undergrupper med 5 elementer
+vil gi oss $(5-1)\cdot 21 = 84$ ulike elementer. Et tilsvarende element holder for de 15
+Sylow-7-undergruppene, som gir oss $(7-1)\cdot 15 = 90$ ulike elementer. Siden disse gruppene
+ikke kan overlappe så må $G$ da ha minst 90+84 elementer, men siden vi vet at $\abs{G}=105$ så 
+er ikke dette mulig. Dermed må altså enten $n_5$ eller $n_7$ være lik 1, og vi så fra forrige
+oppgave at $n_p = 1$ vil gi en normal undergruppe som ikke er triviell. \qed
+

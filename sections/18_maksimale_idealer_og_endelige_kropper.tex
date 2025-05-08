@@ -1,0 +1,156 @@
+\section{Maksimale Idealer og Endelige Kropper}
+
+\begin{theorem*}{27.5}{}
+	La $R$ være en ring og $I\subseteq R$ et ideal. Da har vi følgende:
+	\begin{align}
+		I=R \iff I \text{ inneholder en enhet }
+	\end{align}
+\end{theorem*}
+
+\begin{theorem*}{(Korollar) 27.6 \& 27.11}{}
+	La $R$ være en kommutativ ring. Da har vi følgende ekvivalens:
+	\begin{align}
+		R \text{ er en kropp } \iff (0)\text{ og }R\text{ er de eneste idealene til }R
+	\end{align}
+\end{theorem*}
+
+\textbf{Bevis}:
+La $R$ være en kropp og $I$ et ideal slik at $I\neq (0)$. Da må det finnes en $a\in R$
+med $a\neq 0$. Siden $R$ er en kropp så må $a$ være en enhet, og da følger det at
+$I=R$ fra teorem 27.5.
+
+Anta nå at $(0)$ og $R$ er de eneste idealene og velg en $a\in R$ slik at $a\neq 0$.
+Se nå på idealet generert av $a$:
+\begin{align}
+	(a)=\cb{ar\mid r\in R}
+\end{align}
+Siden $a\neq 0$ så kan ikke $(a)=(0)$, men siden $(a)$ må være et ideal så må da
+$(a)=R$ per antagelsen vår. Dette betyr blant annet at $1\in (a)$, som igjen betyr at
+det finnes en $r\in R$ med $ar=1$. Men merk at da må $a$ være en enhet og dermed er
+$R$ en kropp. \qed
+
+\begin{definition}{Maksimalt Ideal}{}
+	La $R$ være en ring og $M\subseteq R$ et ideal. Vi sier at $M$ er et
+	\textbf{maksimalt ideal} dersom følgende krav tilfredsstilles:
+	\begin{enumerate}
+		\item $M\neq R$
+		\item Det finnes ingen idealer $I$ hvor $M\subset I\subset R$
+	\end{enumerate}
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item For $p\in \mathbb{Z}$, er det slik at $(p)$ er et maksimalt ideal i $\mathbb{Z}$?
+
+	      Anta at $(p)\subset I$ for et ideal $I\subseteq \mathbb{Z}$. Da må det finnes et element
+	      $a\in I\setminus (p)$, og siden $a\not\in (p)$ sa må da $p\nmid a$, altså er $\gcd(p,a)=1$.
+	      Da vet vi at det må finnes $m_1, m_2\in \mathbb{Z}$ slik at $1=m_1a+m_2p$. Siden $a,p\in I$
+	      så må også $m_1a+m_2p\in I$, altså er $1\in I$. Da har vi at $I=R$ fra teorem 27.5. Så
+	      $(p)$ er et maksimalt ideal i $\mathbb{Z}$.
+
+	\item Anta at $n\in \mathbb{Z}$ ikke er et primtall og at $n\geq 0$. Da er ikke $(n)$ et maksimalt
+	      ideal i $\mathbb{Z}$.
+
+	      \begin{itemize}
+		      \item Dersom $n=0$ så er $(n)=\cb{0}$, altså ikke et maksimalt ideal
+		      \item Dersom $n=1$ så er $(n)= \mathbb{Z}$, altså ikke et maksimalt ideal
+		      \item Dersom $n>1$ så kan vi skrive $n=ab$ hvor $1<a,b<n$. Da må nødvendigvis $(a)$ og
+		            $(b)$ begge inneholde $(n)$, altså er blant annet $(n)\subset (a)\subset \mathbb{Z}$,
+		            så da er ikke $(n)$ et maksimalt ideal
+	      \end{itemize}
+	\item La $F$ være en kropp og $p(x)\in F[x]$ et irredusibelt polynom. Da er
+	      $(p(x))=\cb{p(x)q(x)\mid q(x)\in F[x]}$ et maksimalt ideal i $F[x]$.
+
+	      Anta at $(p(x))\in I$ for et ideal $I\subset F[x]$. Et resultat fra øving 12 sier da at det
+	      finnes et polynom $f(x)\in F[x]$ med $I=(f(x))$. Da er $p(x)\in(f(x))$, som betyr at det finnes
+	      $g(x)\in F[x]$ slik at $p(x)=f(x)g(x)$. Siden vi har antatt at $p(x)$ er irredusibelt
+	      så må da enten $f(x)$ eller $g(x)$ være konstant og $f(x), g(x)\neq 0$. Dersom $f(x)$ er
+	      konstant så er $(f(x))=F[x]$ og hvis $g(x)$ er konstant så må $(f(x))=(p(x))$. Uansett
+	      så vil $(p(x))$ være et maksimalt ideal.
+	\item Dersom $f(x)\in F[x]$ er redusibelt så er ikke $(f(x))$ et maksimalt ideal.
+\end{enumerate}
+
+\begin{theorem*}{27.9}{}
+	Anta at $R$ er en kommutativ ring og at $M\subseteq R$ er et ideal. Da holder følgende
+	ekvivalens:
+	\begin{align}
+		M \text{ er et maksimalt ideal}\iff R/M \text{ er en kropp}
+	\end{align}
+\end{theorem*}
+
+Konsekvensen av dette og resultatene fra øving 12 er at i $\mathbb{Z}$ og $F[x]$ så er ethvert
+ideal generert av et element:
+\begin{itemize}
+	\item $I \subset \mathbb{Z}$ er et ideal $\implies \exists n\in \mathbb{Z}$ med $I=(n)$.
+	\item $I\subset F[x]$ er et ideal $\implies\exists f(x)\in F[x]$ med $I=(f(x))$.
+\end{itemize}
+
+Sammen med teorem 27.9 og de tidligere eksemplene har vi:
+\begin{enumerate}
+	\item Følgende utsagn er ekvivalente for et ideal $I\subset \mathbb{Z}$:
+	      \begin{itemize}
+		      \item $I$ er et maksimalt ideal
+		      \item $I$ er generert av et primtall
+		      \item $\mathbb{Z}/I$ er en kropp
+	      \end{itemize}
+	\item Følgende utsagn er ekvivalente for et ideal $I\subset F[x]$:
+	      \begin{itemize}
+		      \item $I$ er et maksimalt ideal
+		      \item $I$ er generert av et irredusibelt polynom
+		      \item $F[x]/I$ er en krop
+	      \end{itemize}
+\end{enumerate}
+
+\textbf{Eksempel}:
+Se på $p(x)=x^2+1\in \mathbb{Z}_3[x]$. Er $p(x)$ irredusibelt? Husk at fra teorem 23.10 så har
+vi at dersom et polynom har grad 2 eller 3 så er det irredusibelt hvis og bare hvis det ikke har
+noen røtter. La oss sjekke $p(x)$:
+\begin{itemize}
+	\item $p(0)=1\neq 0$
+	\item $p(1)=2\neq 0$
+	\item $p(2)=2\neq 0$
+\end{itemize}
+Så vi har at $p(x)$ er irredusibelt. Da vet vi at $\mathbb{Z}_3[x]/(x^2+1)$ er en kropp og har
+$3^2$ elementer.
+
+La nå $F$ være en endelig kropp. Da må vi etter hvert få elementet 0, altså den additive
+inversen, som et element i denne lista
+\begin{align}
+	\cb{1, 1+1, 1+1+1, \dots}:=\cb{1, 2, 3, \dots}
+\end{align}
+Vi sier at \textbf{karakteristikken} til $F$ er $\min\cb{n\geq 0\mid n=0}$. Dette må være et
+primtall, fordi hvis ikke måtte en av faktorene vært 0 selv. Dersom vi definerer $p$ til å
+være karakteristikken til $F$, så får vi en injektiv ringhomomorfi:
+\begin{align}
+	\mathbb{Z}_p & \ra F                                               \\
+	a            & \mapsto \underbrace{1+1+\cdots+1}_{a\text{ ganger}}
+\end{align}
+Altså har vi at $F$ inneholder en underkropp som er isomorf med $\mathbb{Z}_p$. La oss identifisere
+denne med $\mathbb{Z}_p$. Derfor sier vi at: $F$ er en endelig kropp hvis og bare hvis $F$
+inneholder $\mathbb{Z}_p$ som underkropp for et primtall $p$, hvor $p$ er karakteristikken til $F$.
+
+Siden $F$ er endelig så er $\dim F=d<\infty$. Da har vi en basis $b_1, \dots, b_d$ i $F$, så
+$\abs{F}=p^d$.
+
+\begin{theorem*}{}{}
+	La $p$ være et primtall. Da har vi at:
+	\begin{enumerate}
+		\item For alle $d\geq 1$ så finnes det et irredusibelt polynom $p(x)\in \mathbb{Z}_p[x]$ med
+		      $\deg p(x)=d$.
+		\item Vi vet da at $F=\mathbb{Z}_p[x]/(p(x))$ er en kropp.
+
+		      Den har $\mathbb{Z}_p$ som underkropp og en basis som vektorrom over $\mathbb{Z}_p$ er
+		      $\nb{1+(p(x)), x+(p(x)), \dots, x^{d-1}+(p(x))}$, hvor elementene i basisen er restklasser.
+		\item Spesielt er $\dim_{\mathbb{Z}_p}F=d$ og $\abs{F}=p^d$
+    \item Hvis $F$ og $F'$ er to endelige kropper med $\abs{F}=\abs{F'}$ så er de isomorfe. 
+	\end{enumerate}
+\end{theorem*}
+
+\textbf{Algoritme} (for å konstruere en kropp med $p^d$ elementer hvis $d\geq 2$):
+
+\begin{enumerate}
+  \item Finn et irredusibelt polynom $p(x)\in \mathbb{Z}_p[x]$ med $\deg p(x)=d$
+  \item Da vil $\mathbb{Z}_p[x]/(p(x))$ være en kropp med $p^d$ elementer
+\end{enumerate}
+
+\textbf{Merk}: $\mathbb{Z}_{p^d}$ er en ring, men ikke en gyldig kropp.

@@ -1,0 +1,84 @@
+\section{Integritetsområder}
+\begin{definition}{Nulldivisor}{}
+  La $R$ være en ring og $a\in R$ et element. Da sier vi at $a$ er en \textbf{nulldivisor} dersom
+  $a \neq 0$ og det eksisterer $b\in R$ med $b \neq 0$ og $ab = 0$ eller $ba = 0$. 
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+  \item Det finnes ingen nulldivisorer i $\mathbb{Z}$, fordi $ab = 0 \implies a = 0 \vee b = 0$ for
+    alle $a, b \in \mathbb{Z}$. 
+  \item Se på $\mathbb{Z}_6$: Der har vi at $2\cdot_6 3 = 0$ og at $3\cdot_6 4 = 0$, så 2, 3 og 4
+    er nulldivisorer.
+  \item Vis at dersom $a$ er en enhet, så er ikke $a$ en nulldivisor. 
+
+    Anta $a\in R$ er en enhet. Da må det finnes $b\in R$ slik at $ab = ba = 1$. Anta videre,
+    \textit{reductio ad absurdum}, at $a$ også er en nulldivisor, altså at det finnes en 
+    $c\in R$, $c\neq 0$, slik at $ac = 0$. Da har vi at $ab - ac = a(b-c) = 1 - 0 = 1$. Så vi 
+    har at $a(b-c) = ab$ hvor $a \neq 0$. Da må $b-c = b$, som betyr at $c = 0$, men dette er en
+    kontradiksjon, siden $c \neq 0$. \qed
+  \item La $R = M_n(\mathbb{R})$ for $n\geq 2$. Da har vi at for en $A\in R$ med $\det A = 0$ så
+    vil det finnes en $v\in \mathbb{R}^n$ med $Av = 0$ hvor $v \neq 0$. Da kan vi bare 
+    sette sammen $n$ slike: $v_n = \begin{pmatrix} v & v & \cdots && v \end{pmatrix}$. Da vil
+    $Av_n = 0$ og $v_n \in R$. 
+\end{enumerate}
+
+\begin{theorem*}{19.3}{}
+  Nulldivisorne i $\mathbb{Z}_n$ er $\cb{a\in \mathbb{Z}_n\mid a\neq 0, \gcd(a, n) > 1}$. 
+\end{theorem*}
+
+\textbf{Bevis}:
+Anta $a \neq 0$ i $\mathbb{Z}_n$. Dersom $\gcd(1, n) = 1$, så har vi fra tallteorien at 
+$ax \equiv 1 \pmod{n}$ er løsbar. Da finnes det $b\in \mathbb{Z}_n$ med $ab \equiv 1\pmod{n}$,
+altså at $a\cdot_n b = 1$, så da er $a$ en enhet og fra eksempel 3 så kan dermed ikke $a$ være
+en nulldivisor. 
+
+Dersom $\gcd(a, n) = d > 1$ så må $a = m_1d$ og $n = m_2d$ for to tall $1 \leq m_1m_2\leq n-1$.
+Vi kan nå velge $b:= m_2$. Da har vi at $b \neq 0$ og $ab=m_1m_2d=m_1n$, som betyr at 
+$ab\equiv 0 \pmod{n}$, som betyr at $a$ er en nulldivisor. \qed
+
+\begin{theorem*}{(Korollar) 19.4}{}
+  $\mathbb{Z}_n$ har ingen nulldivisorer $\iff n$ er et primtall 
+\end{theorem*}
+
+\begin{definition}{Integritetsområde}{}
+  La $R$ være en ring. Vi sier at $R$ er et \textbf{integritetsområde} dersom følgende er oppfylt:
+  \begin{enumerate}
+    \item $R$ er en kommutativ ring
+    \item $R$ har ingen nulldivisorer
+  \end{enumerate}
+\end{definition}
+
+\textbf{Eksempler}
+\begin{enumerate}
+  \item Vi har at $\mathbb{Z}$ er et integritetsområde
+  \item Vi har at $\mathbb{Z}_n$ er et integritetsområde når $n$ er et primtall
+\end{enumerate}
+
+\begin{theorem*}{19.9}{}
+  La $F$ være en ring. Da har vi at $F$ er en kropp hvis og bare hvis $F$ er et integritetsområde. 
+\end{theorem*}
+\textbf{Bevis}: Se eksempel 3
+
+\begin{theorem*}{19.11}{}
+  La $R$ være en ring. Dersom $R$ er et integritetsområde og $R$ er endelig så er $R$ en kropp. 
+\end{theorem*}
+
+\textbf{Bevis}: La $a_1, \dots, a_n$ være elementene i $R\setminus \cb{0}$. Da må ett av elementene
+være 1. Velg nå en vilkårlig $a \in \cb{a_1, \dots, a_n}$ og se på 
+$\cb{aa_1, aa_2, \dots, aa_n}$. Ingen av disse kan være 0, siden $R$ er et integritetsområde og
+dermed ikke har noen nulldivisorer. Videre så kan ikke denne mengden ha noen duplikater, fordi
+hvis den hadde det, så kunne man tatt $aa_i - aa_j = a(a_i - a_j) = 0$, men da må $a_i = a_j$. 
+Dermed må vi ha at $\cb{aa_1, aa_2, \dots, aa_n} = \cb{a_1, \dots, a_n}$, som betyr at
+den må inneholde elementet 1. Dermed finnes det $a_i\in R$ slik at $aa_i = 1$, og da må
+$a$ være en enhet siden $R$ er kommutativ. \qed
+
+\begin{theorem*}{19.12}{}
+  Følgende utsagn er ekvivalente for $n \geq 2$: 
+  \begin{itemize}
+    \item $n$ er et primtall
+    \item $\mathbb{Z}_n$ er et integritetsområde
+    \item $\mathbb{Z}_n$ er en kropp
+  \end{itemize}
+\end{theorem*}
+

@@ -1,0 +1,225 @@
+\section{Gruppevirkninger}
+\begin{definition}{Gruppevirkning}{}
+	La $G$ være en gruppe og $X$ være en mengde. En \textbf{gruppevirkning} på $X$ fra
+	$G$ er en funksjon $G\times X \ra X$ som tilfredsstiller to krav:
+	\begin{itemize}
+		\item $(e, x) = x$ for alle $x \in X$.
+		\item $(g_1g_2, x) = (g_1, (g_2, x))$ for alle $g_1, g_2 \in G, x\in X$.
+	\end{itemize}
+	Dersom disse kravene tilfredsstilles så kaller vi $X$ en \textbf{$G$-mengde}.
+	\newline\newline
+	\textbf{Notasjon}: Dersom $g\in G$ og $x\in X$ så skriver vi normalt sett
+	$(g, x) = gx$.
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item La $G = S_n$ og $X = \cb{1, \dots, n}$. For en permutasjon $\sigma \in G$ og
+	      $x\in X$ så er $\sigma x = \sigma(x)$ en gruppevirkning.
+	\item La $G$ være en gruppe og $X=\cb{H\leq G}$ være mengden av alle undergrupper av
+	      $G$. La oss videre definere en funksjon
+	      \begin{align}
+		      G\times X   & \ra X                                       \\
+		      gH = (g, H) & \mapsto gHg^{-1} = \cb{ghg^{-1}\mid h\in H}
+	      \end{align}
+	      Sjekk at dette er en undergruppe av $G$. Vi har at $eH = eHe^{-1} = H$ og at
+	      $(g_1g_2)H = g_1g_2Hg_2^{-1}g_1^{-1} = g_1(g_2Hg_2^{-1})g_1^{-1} = g_1(g_2H)$.
+	      Denne gruppevirkningen kalles \textbf{Konjugasjon}.
+	\item La
+	      \begin{align}
+		      G & = \cb{A\in \mathcal{M}_3(\mathbb{R})\mid A \text{ er ortogonal}} \\
+		        & = \cb{A\in \mathcal{M}_3(\mathbb{R})\mid A^{-1} = A^\intercal}   \\
+		        & = \text{O}_3(\mathbb{R})
+	      \end{align}
+	      være en gruppe med matrisemultiplikasjon som binæroperator. Merk at
+	      $\norm{Av} = \norm{v} \forall v\in \mathbb{R}^3, A\in G$, altså at
+	      $A$ bevarer normen til vektorer. Fiksér en $a > 0$ og la
+	      $X = \cb{r\in \mathbb{R}^3\mid \norm{r} = a}$. For $A \in G$ og $v\in X$
+	      så er $\norm{Av} = \norm{v}$, så $Av\in X$.
+
+	      Videre har vi at:
+	      \begin{enumerate}
+		      \item $Iv = v \forall v\in X$
+		      \item $(AB)v = A(Bv)\ \forall A, B\in G, v\in X$
+	      \end{enumerate}
+	      Dermed følger det at $X$ er en $G$-mengde og at vi har en gruppevirkning.
+	\item La $G = \mathbb{Z}_2$ og $X = \mathbb{R}$. Definer så
+	      \begin{align}
+		      G\times X & \ra X                \\
+		      mx        & \mapsto \begin{cases}
+			                          x  & m = 0 \\
+			                          -x & m = 1
+		                          \end{cases}
+	      \end{align}
+	      Da er $0x = x$ og (sjekk) $(m + n)x = m(nx)$.
+\end{enumerate}
+
+\begin{definition}{Transitiv Virkning}{}
+	La $G$ være en gruppe og $X$ en mengde. Vi sier at $G$ virker \textbf{transitivt} på
+	$X$ dersom $\forall x_1, x_2\in X\ \exists g\in G$ hvor $gx_1 = x_2$.
+\end{definition}
+
+\textbf{Eksempel}: Vi har at (1) og (3) fra det forrige eksempelet er transitive virkninger.
+Spesielt så ser vi at $forall v_1, v_2 \in \mathbb{R}^3$ med $\norm{v_1}=\norm{v_2}$ så vil det
+finnes en $A \in \text{O}_3(\mathbb{R})$ slik at $Av_1 = v_2$ (ikke helt trivielt).
+
+Videre har vi at (2) ikke er transitiv. Vi ser at $\abs{H} = \abs{gHg^{-1}}$, så derfor kan man
+ikke gå fra en størrelse til en annen.
+
+\begin{definition}{}{}
+	La $G$ være en gruppe og $X$ en mengde, og la $g\in G$ og $x\in X$. Da definerer vi følgende
+	mengder:
+	\begin{align}
+		G_x & = \cb{h\in G\mid hx = x} \subseteq G  \\
+		X_g & = \cb{y \in X\mid gy = y} \subseteq X
+	\end{align}
+\end{definition}
+
+\begin{theorem*}{}{}
+	La $G$ være en gruppe, $X$ være en mengde og $x \in X$. Da vil $G_x \leq G$.
+\end{theorem*}
+
+\textbf{Bevis}:
+La oss først merke at $G_x \neq \emptyset$ siden $e \in G_x$. La nå $h_1, h_2 \in G_x$. Da er
+$h_i x = x$, noe som betyr at $x = h_i^{-1}x$. Da vil
+\begin{align}
+	(h_1h_2^{-1})x & = h_1(h_2^{-1}x) \\
+	               & = h_1(x)         \\
+	               & = x
+\end{align}
+noe som betyr at $h_1h_2^{-1} \in G_x$. Altså må $G_x \leq G$. \qed
+
+\begin{definition}{Isotropi-undergruppen}{}
+	$G_x$ kalles \textbf{isotropi-undergruppen} til $x$ i $G$.
+\end{definition}
+
+\begin{definition}{Bane til element in mengde}{}
+	La $G$ være en gruppe, $X$ være en mengde og $x \in X$. Da sier vi at \textbf{banen} til $x$
+	er $Gx = \cb{gx\mid g\in G}$.
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item La $G$ være en gruppe og definer $X = \cb{H \leq G}$. Da vet vi at $g\cdot H = gHg^{-1}$
+	      for $H\in X$. Da er $G_H = \cb{g\in G\mid gHg^{-1} = H}$.
+	\item La $G = \text{O}_3(\mathbb{R})$ og $X = \cb{v\in \mathbb{R}^3\mid \norm{v} = a}$. Da har
+	      vi at
+	      \begin{align}
+		      G_v & = \cb{A\in \text{O}_3(\mathbb{R})\mid Av = v} \\
+		          & = \cb{A\in\text{O}_3(\mathbb{R})\
+			      |\ v \text{ egenvektor av }A\text{ med }\lambda=1}
+	      \end{align}
+	\item Vi har at 'transitiv virkning $\iff Gx=X\ \forall x\in X$'
+\end{enumerate}
+
+\begin{theorem*}{16.16}{}
+	La $G$ være en gruppe, $X$ være en mengde og $x\in X$ et element. Da har vi at
+	$\abs{Gx} = (G:G_x)$, hvor $(G:G_x)$ betegner indeksen til $G_x$ i $G$, altså antall venstre
+	restklasser.
+\end{theorem*}
+\textbf{Bevis}:
+For $g_1, g_2\in G$ så har vi at 
+$g_1x = g_2x \iff g_2^{-1}g_1x = x \iff g_2^{-1}g_1\in G_x \iff g_1G_x = g_2G_x$. Dermed har vi
+altså en veldefinert funksjon:
+\begin{align}
+  Gx &\ra \cb{\text{venstre restklasser til }G_x\text{ i }G} \\
+  gx &\mapsto gG_x
+\end{align}
+Ettersom denne funksjonen er bijektiv så må mengdene være like store, som var det vi ville 
+vise. \qed
+
+Vis følgende:
+\begin{enumerate}
+  \item $\forall x_1, x_2 \in X, x_1 \in Gx_2 \iff Gx_1 = Gx_2 \iff x_2 \in Gx_1$
+  \item Definer relasjonen på $X$ ved $x_1 \in Gx_2$. Dette er en ekvivalensrelasjon.
+  \item De følgende utsagnene er ekvivalente:
+    \begin{enumerate}
+      \item $G$ virker transitivt på $X$
+      \item $Gx = X\ \forall x\in X$
+      \item Det finnes $x\in X$ med $Gx = X$
+      \item $X$ har kun én ekvivalensklasse for relasjonen i 2)
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Burnsides Formel}
+
+\begin{theorem*}{Burnsides Formel}{}
+  La $G$ være en endelig gruppe og $X$ en endelig $G$-mengde med $r$ baner i $X$. Da følger det at:
+  \begin{align}
+    r\cdot \abs{G} = \sum_{g\in G}\abs{X_g}
+  \end{align}
+\end{theorem*}
+
+\textbf{Bevis}: Se på undermengden $M$ av $G\times X$:
+\begin{align}
+  M = \cb{(g,x)\mid gx=x}
+\end{align}
+Da har vi at 
+\begin{align}
+  \sum_{g\in G}\abs{X_g} &= \sum_{g\in G}\abs{\cb{x\in X\mid gx=x}} = \abs{M} \\
+                         &= \sum_{x\in X}\abs{\cb{g\in G\mid gx=x}} \\
+                         &= \sum_{x_in X}\abs{G_x}
+\end{align}
+Videre har vi at for alle $x\in X$ så er $\abs{Gx} = (G:G_x) = \frac{\abs{G}}{\abs{G_x}}$. Da
+må vi ha at 
+\begin{align}
+  \abs{M} &= \sum_{x\in X}\abs{G_x} = \sum_{x\in X}\frac{\abs{G}}{\abs{Gx}} 
+          = \abs{G}\cdot \sum_{x\in X} \frac{1}{\abs{Gx}}
+\end{align}
+La nå $B$ være en av banene i $X$, altså at $B = Gx$ for en $x \in X$. Da har vi at alle elementene
+i $B$ har $B$ selv som bane, altså at $B = Gx'\ \forall x'\in B$ og at
+\begin{align}
+  \sum_{x\in B}\frac{1}{\abs{Gx}} = \sum_{x\in B}\frac1B = 1
+\end{align}
+Dette betyr altså at hver bane, $B$, gir et bidrag på 1 i $\sum_{x\in X} \frac{1}{\abs{Gx}}$. Siden
+banene må være helt disjunkte og vi har $r$ baner så betyr dette at 
+\begin{align}
+  \abs{M} = \abs{G}\sum_{x\in X}\frac{1}{\abs{Gx}} = \abs{G}\cdot r
+\end{align}
+og siden $\abs{M} = \sum_{g\in G}\abs{X_g}$ så må altså
+\begin{align}
+  \sum_{g\in G}\abs{X_g} = \abs{G}\cdot r
+\end{align}
+som var det vi ville vise. \qed
+
+\textbf{Eksempel (Eksamen Vår 2013, oppg. 4)}:
+
+Anta et perlekjede skal være bestående av 11 like store perler, hvorav 5 skal være sorte og 6 skal
+være hvite. Hvor mange ulike slike perlekjeder kan du lage?
+
+Først, sett $G$ til å være symmetrigruppen til perlekjedet. Da vil elementene i $G$ bestå av
+11 rotasjoner, $\cb{\rho_0, \dots, \rho_10}$ og 11 speilinger, $\cb{\mu_1, \dots, \mu_11}$. Her
+tenker vi at $\mu_i$ holder perle $i$ i ro. Da vil $\abs{G} = 22$. 
+
+La nå $X$ være mengden av alle fargelagte perlekjeder uten å ta hensyn til symmetrier. Da vil $G$
+virke på $X$ og antall baner vil være antall ulike perlekjeder som vi skal frem til. Fra Burnsides
+formel har vi 
+\begin{align}
+  22\cdot r = \sum_{g\in G} \abs{X_g} = \sum_{i=0}^{10} \abs{X_{\rho_i}} + 
+  \sum_{j=1}^{11}\abs{X_{\mu_j}}
+\end{align}
+Merk at $\abs{X} = \binom{11}{5}$ og at
+\begin{align}
+  \abs{X_{\rho_i}} = \begin{cases}
+      \abs{X} = \binom{11}{5} & i = 0 \\
+      0 & i \neq 0
+  \end{cases}
+\end{align}
+siden ingen elementer holdes i ro da det finnes 5 sorte og 6 hvite. 
+
+Hva med $X_{\mu_i}$? Dersom $x\in X$ skal ligge i $X_{\mu_i}$ så må perle $i$ være sort slik at vi
+kan ha et partall antall sorte på hver side, også må det faktisk være et partall på hver side,
+altså to perler i dette tilfellet. Det vil finnes $\binom{5}{2}$ slike perlekjeder, fordi man
+vil ha fem perler på hver side og man har kun frihet til å velge den ene siden, siden den andre
+må være lik. Når man velger den ene siden, som består av fem perler, så kan man velge hvor de to
+sorte skal være. Altså har vi at
+\begin{align}
+  \abs{X_{\mu_i}} = \binom{5}{2}
+\end{align}
+Dersom vi nå setter alt inn i Burnsides formel får vi:
+\begin{align}
+  22r &= \binom{11}{5} + \sum_{i=1}^{11} \binom{5}{2} \\
+      &= 572
+\end{align}
+som betyr at $r = 26$. Altså finnes det 26 slike perlekjeder. 
+

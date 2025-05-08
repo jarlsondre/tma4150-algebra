@@ -1,0 +1,65 @@
+\section{Undergrupper}
+
+\begin{definition}{Ordenen til en gruppe}{}
+	La $G$ være en gruppe. Da kaller vi $\abs{G}$ for \textbf{ordenen} til $G$ og vi
+	sier at $G$ er en \textbf{endelig gruppe} dersom $\abs{G} < \infty$.
+\end{definition}
+
+\begin{definition}{Undergruppe}{}
+	La $G$ være en gruppe. Da sier vi at en delmengde $H \subseteq G$ er en
+	\textbf{undergruppe} dersom den tilfredsstiller de følgende kravene:
+	\begin{enumerate}
+		\item $H$ er lukket under binæroperasjonen på $G$.
+		\item $H$ er selv en gruppe med binæroperasjonen på $G$
+	\end{enumerate}
+	Vi skriver i så fall $H \leq G$, med $H < G$ dersom $H \neq G$. Dersom $H < G$, så
+	sier vi at $H$ er en \textbf{ekte undergruppe} og vi kaller $\cb{e}$ den
+	\textbf{trivielle undergruppen}.
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item La $G = (\mathbb{Z}, +)$ og la $m \in \mathbb{N}$. Definer
+	      $H=m\mathbb{Z} = \cb{mn\mid n\in\mathbb{Z}}$. Da er $H < G$ for $m \neq 1$ og
+	      $H = G$ for $m = 1$.
+	\item La $U = \cb{z\in \mathbb{C}\mid \abs{z} = 1}$. Vi har tidligere sett at
+	      $(U, \cdot)$ er en abelsk gruppe. For $m \in \mathbb{N}$, la
+	      $U_m = \cb{z\in\mathbb{C}\mid z^m = 1}$. Da er $U_m < U$.
+	\item Selv om $G:=(\mathbb{Q}, +)$ er en gruppe og
+	      $H:=(\mathbb{Q}\setminus \cb{0}, \cdot)$ er en gruppe, så er ikke $H<G$ selv om
+	      det er en delmengde. Dette er fordi de ikke har samme binæroperasjon.
+\end{enumerate}
+
+\begin{theorem*}{5.14 (superversjon)}{}
+	La $G$ være en gruppe og $H \subset G$ en ikke-tom delmengde. Da er $H$ en
+	undergruppe hvis og bare hvis $a, b \in H \implies ab^{-1}\in H$.
+\end{theorem*}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item Vi har sett at $\text{GL}(2, \mathbb{R})$ er en gruppe med
+	      matrisemultiplikasjon. La
+	      \begin{align}
+		      \text{O}(2, \mathbb{R})
+		       & = \cb{A\in \mathcal{M}_2(\mathbb{R})\mid A \text{ er orthogonal}} \\
+		       & = \cb{A\in \mathcal{M}_2(\mathbb{R})\mid A^{-1} = A^\intercal}
+	      \end{align}
+        Da vil $\text{O}(2, \mathbb{R}) \neq \emptyset$ og 
+        $\text{O}(2, \mathbb{R}) \subset \text{GL}(2, \mathbb{R})$.
+
+        La $M, N \in \text{O}(2, \mathbb{R})$. Da har vi at $MN^{-1} = MN^\intercal$,
+        $(MN^\intercal ){^\intercal} = NM^\intercal$ og at 
+        $MN^\intercal NM^\intercal = \mathcal{I}$, så 
+        $(MN^{-1})^{-1} = (MN^{-1})^{\intercal}$. Altså er 
+        $MN^{-1} \in \text{O}(2, \mathbb{R})$, så $\text{O}(2, \mathbb{R})$ er en
+        undergruppe av $\text{GL}(2, \mathbb{R})$. 
+  \item For $n \in \mathbb{N}$ så definerer vi $\mathbb{Z}_n = \cb{0, 1, \dots, n-1}$.
+    Da er $(\mathbb{Z}_n, +_n)$ en abelsk gruppe, hvor $+_n$ er addisjon modulo $n$. 
+
+    Eksempelvis er $\mathbb{Z}_9 = {0, 1, \dots, 8}$ og $7 +_9 8 = 6$, fordi
+    $7 + 8 = 15 \equiv 6 \pmod{9}$. 
+
+    \textbf{Merk} $\abs{\mathbb{Z}_n} = n$, så for alle $n \in \mathbb{N}$ så finnes
+    det en abelsk gruppe $G$ med $\abs{G} = n$. 
+\end{enumerate}
+

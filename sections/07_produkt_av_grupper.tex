@@ -1,0 +1,112 @@
+\section{Produkt av grupper}
+Vi er kjente med at dersom $S_1, S_2, \dots, S_t$ er mengder, så er det kartesiske produktet
+mellom de definert som
+\begin{align}
+	S_1\times S_2\times \cdots\times S_t = \cb{(s_1,s_2,\dots,s_t)\mid s_i\in S_i}
+\end{align}
+
+\textbf{Eksempel}:
+\begin{align}
+	\mathbb{Z}\times\mathbb{Z}\times\mathbb{C}=\cb{(x,y,z)\mid x,y\in\mathbb{Z}, z\in\mathbb{C}}
+\end{align}
+
+\textbf{Merk}: Vi har at
+\begin{align}
+	\abs{S_1\times S_2\times\cdots\times S_t}=\prod_{i=1}^t\abs{S_i}
+\end{align}
+
+\begin{theorem*}{11.2}{}
+	La $G_1, \dots, G_t$ være grupper. Da har vi at $G_1\times\cdots\times G_t$ er en gruppe
+	med binæroperasjon
+	\begin{align}
+		(a_1,\dots,a_t)(b_1,\dots,b_t)=(a_1b_1,\dots,a_tb_t)
+	\end{align}
+	hvor multiplikasjonen skjer elementvis og hører til hver enkelt gruppe. Dette er det
+	\textbf{direkte produktet} av $G_1,\dots, G_t$.
+\end{theorem*}
+
+\textbf{Bevis}: Oppgave
+
+\textbf{Merk}:
+\begin{enumerate}
+	\item Vi bruker $\prod_{i=1}^t G_i$ notasjon.
+	\item Identitetselementet er $(e_1, e_2, \dots, e_t)$ hvor $e_i\in G_i$ er identiteten.
+	\item Vi har at $(a_1, a_2, \dots, a_t)^{-1}=(a_1^{-1}, a_2^{-1},\dots, a_t^{-1})$
+	\item Vi har at $\prod G_i$ er abelsk $\iff G_i$ er abelsk $\forall i$
+\end{enumerate}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item La oss se på $(\mathbb{Z}, +)$ og $(U,\cdot)$, hvor $U=\cb{z\in \mathbb{C}\mid\abs{z}=1}$.
+	      Da har vi at binæroperasjonen til $\mathbb{Z}\times U$ er gitt ved $(a,z)(b,w)=(a+b,zw)$.
+	\item $\mathbb{Z}_2\times \mathbb{Z}_2$ har fire elementer, $\cb{(0,0), (0,1), (1,0), (1,1)}$
+
+	      Vi ser at $(1,0)+(1,0)=(1+1,0+0)=(0,0)$.
+
+	      Elementene $(1,0)$, $(0,1)$ og $(1,1)$ har orden 2 i $\mathbb{Z}_2\times \mathbb{Z}_2$, så
+	      ingen elementer har orden 4, altså finnes det ingen elementer som genererer hele grupper.
+	      Dermed er den ikke syklisk.
+
+	      Altså har vi at $\mathbb{Z}_4$ og $\mathbb{Z}_2\times \mathbb{Z}_2$ er ikke-isomorfe abelske
+	      grupper med 4 elementer.
+\end{enumerate}
+
+\begin{theorem*}{11.5}{}
+	$\mathbb{Z}_m\times \mathbb{Z}_n$ er syklisk (og dermed isomorf med $\mathbb{Z}_{mn}$)
+	$\iff \gcd(m,n)=1$.
+\end{theorem*}
+
+\textbf{Bevis}: Anta at $\gcd{m,n}=1$. Vis da at $(1,1)$ genererer hele
+$\mathbb{Z}_m\times \mathbb{Z}_n$
+
+Motsatt, dersom $\gcd(m,n)=d\geq 2$, kan man vise at ingen elementer i gruppen genererer hele
+gruppen.
+
+Ordenen til $(a,b)\leq \frac{m\cdot n}{d}<m\cdot n$.
+
+\begin{theorem*}{(Korollar) 11.6}{}
+	$\mathbb{Z}_{n_1}\times\cdots\times \mathbb{Z}_{n_t}$ er syklisk (og isomorf med
+	$\mathbb{Z}_{\prod_{i=1}^t n_i}$) $\iff \gcd(n_i, n_j)=1\ \forall i\neq j$
+\end{theorem*}
+
+\begin{theorem*}{11.9}{}
+  La $G_1,\dots,G_t$ være grupper og $a_i\in G_i$ være elementer av orden $n_i$. Da har vi at
+  $(a_1,\dots,a_t)$ har orden $\text{lcm}(n_1,n_2,\dots,n_t)$.
+\end{theorem*}
+
+\textbf{Eksempel}: Se på $\mathbb{Z}_5\times \mathbb{Z}_8$ og elementet $(2,3)$. Siden 
+2 har orden 5 i $\mathbb{Z}_5$ og 3 har orden 8 i $\mathbb{Z}_8$, så har $(2,3)$
+orden $\text{lcm}(5,8)=40$. Altså må $(2,3)$ være en generator.
+
+Se på $(2,4)$. Siden $4$ har orden 2 i $\mathbb{Z}_8$ så har $(2,4)$ orden $\text{lcm}(5,2)=10$.
+
+
+\begin{theorem*}{11.12 (Fundamentalteoremet for endeliggenererte abelske grupper)}{}
+  Enhver endeliggenerert abelsk gruppe er isomorf med et direkte produkt på formen
+  \begin{align}
+    \mathbb{Z}_{p_1^{n_1}}\times\cdots\times \mathbb{Z}_{p_t^{n_t}}
+    \times\mathbb{Z}\times\cdots\times \mathbb{Z}
+  \end{align}
+  hvor $p_i$ er primtall (men ikke nødvendigvis disinkte) og det er unikhet. Spesielt så har vi
+  at dersom $G$ er en endelig abelsk gruppe så er $G$ isomorf med et direkte produkt på
+  formen
+  \begin{align}
+    \mathbb{Z}_{p_i^{n_1}}\times\cdots\times \mathbb{Z}_{p_t^{n_t}}
+  \end{align}
+\end{theorem*}
+
+\textbf{Bevis}: MA3201, Ringer og Moduler 
+
+\textbf{Eksempel} (Eksamen vår 2021, oppgave 1):
+La $G$ være en abelsk gruppe med $\abs{G}=72$. Hvilke grupper kan $G$ være isomorf med?
+
+Vi har at $72=3^2 \cdot 2^3$. Da har vi fra fundamentalteoremet for endeliggenererte abelske
+grupper at $G$ må være isomorf med en av følgende:
+\begin{itemize}
+  \item $\mathbb{Z}_{9}\times \mathbb{Z}_8\cong \mathbb{Z}_{72}$
+  \item $\mathbb{Z}_{9}\times \mathbb{Z}_4\times \mathbb{Z}_2$
+  \item $\mathbb{Z}_{9}\times \mathbb{Z}_2\times \mathbb{Z}_2\times \mathbb{Z}_2$
+  \item $\mathbb{Z}_3\times \mathbb{Z}_3\times \mathbb{Z}_8$
+  \item $\mathbb{Z}_3\times \mathbb{Z}_3\times \mathbb{Z}_4\times \mathbb{Z}_2$
+  \item $\mathbb{Z}_3\times \mathbb{Z}_3\times \mathbb{Z}_2\times \mathbb{Z}_2\times \mathbb{Z}_2$
+\end{itemize}

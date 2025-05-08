@@ -1,0 +1,129 @@
+\section{Polynomfaktorisering}
+\textbf{Merk}: Dersom $f(x)=g_1(x)g_2(x)\in E$, hvor $E$ er et integritetsområde, så er $\alpha$ en rot
+av $f(x)$ hvis og bare hvis $\alpha$ er en rot av $g_1(x)$ eller $g_2(x)$. Dette er fordi
+$f(\alpha)=g_1(\alpha)g_2(\alpha)=0$ og siden $E$ er et integritetsområde så må da enten
+$g_1(\alpha)=0$ eller $g_2(\alpha)=0$.
+
+\textbf{Husk}: Dersom $a,b\in \mathbb{Z}$ med $b>0$, så finnes det $q,r\in \mathbb{Z}$ slik at
+\begin{enumerate}
+  \item $a=qb+r$
+  \item $0\leq r\leq b$
+\end{enumerate}
+
+\begin{theorem*}{}{}
+  La $f(x),g(x)\in F[x]$ med $g(x)\neq 0$. Da finnes unike polynomer $q(x), r(x)\in F[x]$ slik at
+  \begin{enumerate}
+    \item $f(x)=q(x)g(x)+r(x)$
+    \item $r(x)=0$ eller $\deg r(x) < \deg g(x)$
+  \end{enumerate}
+\end{theorem*}
+
+\textbf{Bevis}: 
+
+\textbf{Eksistens}: Anta først at $g(x)\mid f(x)$, altså at $f(x)=q(x)g(x)$ for et polynom
+$q(x)\in F[x]$. La nå $r(x)=0$. Da er $f(x)=q(x)g(x)+r(x)$, som betyr at punkt 1 og 2 må stemme.
+
+Anta at $g(x)\nmid f(x)$ og definer $M=\cb{f(x)-h(x)g(x)\mid h(x)\in F[x]}$. Merk at $0\not\in M$.
+La $r(x)\in M$ med lavest mulig grad. Da er $r(x)=f(x)-q(x)g(x)$ for $q(x)\in F[x]$. Dette må bety
+at $f(x)=q(x)g(x)-r(x)$, som betyr at punkt 1 stemmer. 
+
+Vi må nå vise at punkt 2 stemmer. Vi vet at $r(x)=0$, så må vise at $\deg r(x) < \deg g(x)$. La oss
+derfor anta at $\deg r(x)\geq \deg g(x)$. Vi kan skrive $g(x)=b_nx^n + \dots b_1x + b_0$ og 
+$r(x) = r_tx^t + \dots + r_1x + r_0$, hvor $b_n,r_t\neq 0$ og $t>r$. Se nå på 
+$\bar{q}(x)=q(x) + \frac{r_t}{b_n}x^{t-n}\in F[x]$ og 
+\begin{align}
+  s(x) &= f(x) - g(x)\bar{q}(x)\in M \\
+       &= f(x) - g(x) \nb{q(x) + \frac{r_t}{b_n}x^{t-n}} \\
+       &= r(x) - r_tx^t - (\text{ledd med lavere grad})
+\end{align}
+Dermed får vi at $\deg s(x) < \deg r(x)$, men siden vi har antatt at $r(x)$ har minimal grad så
+må dette være en kontradiksjon, som igjen betyr at $\deg r(x) < \deg p(x)$. Altså har vi vist
+eksistens, som var det vi ville vise. 
+
+\textbf{Unikhet}: Anta at det finnes $q_1(x),q_2(x),r_1(x),r_2(x)\in F[x]$ slik at
+$f(x)=q_1(x)g(x)+r_1(x) = q_2(x)g(x) + r_2(x)$ med $r_i=0$ eller $\deg r_i(x) <\deg g(x)$. Vi må
+vise at $q_1(x) = q_2(x)$ og at $r_1(x)=r_2(x)$. 
+
+Begynn med å anta at $q_1(x)\neq q_2(x)$. Da har vi at siden 
+$q_1(x)g(x) + r_1(x) = q_2(x)g(x) + r_2(x)$ så må $\nb{q_1(x)-q_2(x)}g(x)=r_2(x)-r_1(x)$. Her har
+vi at venstresiden ikke kan være null siden $q_1(x)\neq q_2(x)$. Videre har vi at
+\begin{align}
+  \deg \nb{q_1(x)-q_2(x)}g(x) &\geq \deg g(x) \\
+                              &>\max \nb{\deg(r_1(x)),\deg(r_2(x))} \\
+                              &\geq \deg \nb{r_2(x)-r_1(x)},
+\end{align}
+men dette er en selvmotsigelse, så $q_1(x) =q_2(x)$. Dette impliserer også at $r_1(x)=r_2(x)$.\qed
+
+\textbf{Eksempler}: 
+\begin{enumerate}
+  \item La $f(x)=x^3+3x+2,g(x)=x^2+1$ i $\mathbb{R}[x]$. Vil finne $q(x),r(x)$ slik som i teoremet
+    over. Da gjør vi polynomdivisjon med $f(x) : g(x)$ (for hånd) og får at $q(x)=x$ og at
+    $r(x)=2x+2$, slik at vi kan skrive $f(x)=x(x^2+1) + (2x+1)$. 
+  \item La $f(x) = 4x^3+x^2-3x+2$ og $g(x)=x^2 + 1$ i $\mathbb{Z}_7[x]$. Ved polynomdivisjon
+    finner vi da at $f(x)=(4x+1)g(x)+1$, altså at $q(x)=4x+1$ og at $r(x)=1$.
+\end{enumerate} 
+
+\begin{theorem*}{(Korollar) 23.3}{}
+  La $f(x)\in F(x)$ og $\alpha\in F$. Da har vi at $\alpha$ er en rot av $f(x)$ hvis og bare hvis
+  $x-\alpha$ er en faktor i $f(x)$.
+\end{theorem*}
+
+\textbf{Bevis}: 
+
+$\nb{\impliedby}$: Anta $f(x)=q(x)(x-\alpha)$ for $q(x)\in F[x]$. Da vil 
+$f(\alpha)=q(\alpha)(\alpha-\alpha)=0$, så $\alpha$ er en rot av $f$.
+
+$\nb{\implies}$: Anta at $\alpha$ er en rot, altså at $f(\alpha)=0$. Fra teorem 23.1 finnes det
+da polynomer $q(x), r(x)\in F[x]$ slik at $f(x)=q(x)(x-\alpha)+r(x)$ med 
+$r(x)=0 \vee \deg r(x) < \deg (x-\alpha) = 1$. Altså må $r(x)$ være en konstant, altså at
+$r(x)=b\in F$. Så $f(x)=q(x)(x-\alpha) + b$, men hvis vi setter inn $\alpha$ så får vi
+$0=q(\alpha)\cdot 0 + b\implies b=0$. Dermed kan vi skrive $f(x)=q(x)(x-\alpha)$. \qed
+
+\begin{theorem*}{(Korollar) 23.5}{}
+  La $f(x)\in F[x]$ og $f(x)\neq 0$. Da er antall røtter av $f(x)$ mindre enn eller lik graden
+  til $f(x)$.
+\end{theorem*}
+
+\textbf{Bevis}: Oppgave (hint: korollar 23.2)
+
+\begin{theorem*}{(Korollar) 23.6}{}
+  La $F$ være en kropp og $F^*=F\setminus \cb{0}$ være en gruppe med enheter i $F$ under 
+  multiplikasjon. Dersom $G\leq F^*$ er en endelig undergruppe så er $G$ syklisk.
+\end{theorem*}
+
+\textbf{Bevis}: Oppgave (eventuelt se i boka)
+
+\textbf{Eksempel}: Se på $F=\mathbb{Z}_p$ hvor $p$ er et primtall. Da sier korollar 23.6 at
+$\mathbb{Z}_p^*$ er en syklisk gruppe.
+
+\textbf{Husk}: Vi sier at $p\in \mathbb{Z}$ er et primtall dersom $p>1$ og hvis $p=ab$ så må enten
+$a=1$ eller $b=1$ for alle $a,b\in \mathbb{Z}$.
+
+\begin{definition}{}{}
+  La $f(x)\in F[x]$ med $f(x)\neq 0$. Da sier vi at $f(x)$ er \textbf{irredusibelt} i $F[x]$
+  dersom
+  \begin{enumerate}
+    \item $\deg f(x)\geq 1$
+    \item $f(x)=g_1(x)g_2(x), g_1(x), g_2(x)\in F[x] \implies$ enten $g_1(x)$ eller $g_2(x)$ er
+      et konstant polynom.
+  \end{enumerate}
+\end{definition}
+
+\textbf{Eksempel}: $f(x)=x^2+1\in \mathbb{R}[x]\subseteq \mathbb{C}[x]$ er ikke irredusibelt i
+$\mathbb{C}[x]$ men er irredusibelt i $\mathbb{R}[x]$.
+
+\begin{theorem*}{23.10}{}
+  Hvis $f(x)\in F[x]$ og $\deg f(x)\in \cb{2,3}$, så er $f(x)$ irredusibelt i $F[x]$ hvis og bare
+  hvis $f(x)$ ikke har noen røtter i $F$. 
+\end{theorem*} 
+
+\textbf{Bevis}: Det er nok å vise at $f(x)$ ikke er irredusibelt i $F[x]$ hvis og bare hvis $f(x)$
+har en rot i $F$. 
+
+Anta $f(x)$ har en rot $\alpha \in F$. Da er $f(x)=q(x)(x-\alpha)$ for $q(x)\in F[x]$ i følge
+korollar 23.2. Da er $\deg f(x)\geq 2$, så $\deg q(x)\geq 1$, så da er $f(x)$ ikke irredusibelt.
+
+Anta at $f(x)$ ikke er irredusibelt i $F[x]$. Da er $f(x)=g_1(x)g_2(x)$ med $g_1(x)g_2(x)\in F[x]$
+og $\deg g_1(x), \deg g_2(x)\geq 1$, $\deg f(x)\in\cb{2,3}$, så minst ett av $g_1(x),g_2(x)$ må
+ha grad 1. La oss si at $\deg g_1(x)=1$. Da har $g_1(x)$ en rot, så da må $f(x)$ ha en rot også.
+\qed

@@ -1,0 +1,61 @@
+\section{Fermats Teorem og Eulers Teorem}
+\textbf{Husk}:
+\begin{enumerate}
+	\item Dersom $G$ er en gruppe med $\abs{G}=n$ og $H \leq G$ er en undergruppe, så må
+	      $\abs{H} \mid n$. Spesielt, dersom $g\in G$, så må $\abs{\inner{g}}\mid n$. Dermed er
+	      $\abs{\inner{g}}:=t$ det minste tallet med $g^t = 1$. Videre så må da også $g^n = 1$.
+      \item La $R$ være en ring og $U(R) = \cb{a\in R\mid a\text{ er en enhet}}$. Da vil 
+        $(U(R), \cdot)$ være en gruppe. Spesielt så har vi at dersom $F$ er en kropp, så er
+        $U(F) = F\setminus \cb{0} = F^*$ en gruppe under multiplikasjon.
+\end{enumerate}
+
+\begin{theorem*}{20.1 (Fermats lille teorem)}{}
+  La $a \in \mathbb{Z}$ og $p$ et primtall med $p \nmid a$. Da har vi at 
+  \begin{align}
+    a^{p-1}\equiv 1\pmod{p},
+  \end{align}
+  altså at $p\mid (a^{p-1}-1)$. 
+\end{theorem*}
+
+\textbf{Bevis}: Fra Korollar 19.12 så må $\mathbb{Z}_p$ være en kropp. Velg nå $b\in \mathbb{Z}_p$
+med $a \equiv b \pmod{p}$. Det må finnes nøyaktig én slik $b$. Vi har at $b$ ikke kan være 0,
+fordi da vil $a \equiv 0 \pmod{p}$, som vil bryte med antagelsen vår. Derfor har vi at $b \neq 0$.
+Ved å slå sammen punkt 1 og 2 fra listen over så får vi at $b^{p-1} = 1$ i $\mathbb{Z}_p$. Men
+da må $b^{p-1}\equiv 1 \pmod{p}$, og siden $a \equiv b \pmod{p}$ så må også 
+$a^{p-1}\equiv 1\pmod{p}$, som var det vi ville vise. \qed
+
+\begin{theorem*}{(Korollar) 20.2}{}
+  La $a\in \mathbb{Z}$ og $p$ være et primtall. Da må $a^p \equiv a \pmod{p}$. 
+\end{theorem*}
+
+\textbf{Bevis}: Dersom $p \mid a$ så er $a \equiv 0 \pmod{p}$ og $a^{p}\equiv 0 \pmod{p}$, så
+da må $a^p\equiv a\pmod{p}$. Dersom $p\nmid a$ så kan vi bruke Teorem 20.1. \qed
+
+Fra før så har vi: Se på $\mathbb{Z}_n$ for $n\geq 2$. Fra beviset for teorem 19.3 så har vi
+\begin{align}
+  U(\mathbb{Z}_n)=\cb{a\in \mathbb{Z}_n\mid a\neq 0, \gcd(a, n) = 1}.
+\end{align}
+For eksempel så har vi da at for $\mathbb{Z}_9 = \cb{0,1,2,\dots,8}$, så er
+$U(\mathbb{Z}_9)=\cb{1, 2, 4, 5, 7, 8}$.
+
+\begin{definition}{Eulers phi-funksjon}{}
+  For $n\in \mathbb{N}$ så definerer vi $\phi(n) = \abs{\cb{1\leq a\leq n\mid \gcd(a,n)=1}}$, 
+  hvor $\phi$ er Eulers phi-funksjon.
+\end{definition}
+\textbf{Eksempler}:
+\begin{itemize}
+  \item $\phi(1) = 1, \cb{1}$
+  \item $\phi(2) = 1, \cb{1}$
+  \item $\phi(3) = 2, \cb{1, 2}$
+  \item $\phi(2) = 2, \cb{1, 3}$
+  \item $\phi(10) = 4, \cb{1, 3, 7, 9}$
+  \item $\phi(p) = p-1$ dersom $p$ er et primtall
+\end{itemize}
+\textbf{Merk}: For $n\geq 2$ så er $\phi(n)=\abs{U(\mathbb{Z}_n)}$.
+
+\begin{theorem*}{20.8 (Eulers Teorem)}{}
+  La $a\in \mathbb{Z}$ og $n\in \mathbb{N}$ slik at $\gcd(a, n) = 1$. Da har vi at
+  $a^{\phi(n)} \equiv 1 \pmod{n}$. 
+\end{theorem*}
+
+

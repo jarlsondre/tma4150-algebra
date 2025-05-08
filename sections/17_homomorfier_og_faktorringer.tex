@@ -1,0 +1,107 @@
+\section{Homomorfier og Faktorgrupper}
+
+\begin{definition}{}{}
+	La $R$ være en kommutativ ring. Et \textbf{ideal} i $R$ er en delmengde $I \neq \emptyset$ med
+	\begin{enumerate}
+		\item $a,b\in I \implies a-b\in I$
+		\item $a\in I, r\in R\implies ra\in I$
+	\end{enumerate}
+\end{definition}
+
+\textbf{Merk}: Siden $R$ er en ring så betyr dette at $(R, +)$ er en abelsk gruppe. Dermed følger
+det fra punkt 1 over at $I$ må være en undergruppe av $(R, +)$.
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item La $n\in \mathbb{Z}$ og se på $I=n \mathbb{Z} = \cb{nt\mid t\in \mathbb{Z}}$. Da er $I$ et
+	      ideal i $\mathbb{Z}$.
+	\item Se på $R=(\mathbb{Z}_8, +_8, \cdot_8)=\cb{0,1,\dots,7}$ og $I=\cb{0,2,4,6}$. Da har vi at
+	      \begin{enumerate}
+		      \item For $a,b\in I$ så vil $a-_8 b\in I$
+		      \item For $a\in I, b\in R$ så vil $ra\in I$
+	      \end{enumerate}
+	      Dermed må $I$ være et ideal i $R$.
+	\item La $F$ være en kropp og se på polynomringen $F[x]$. Fikser så $f(x)$ og se på
+	      $I=(f)=\cb{fg\mid g\in F[x]}$. Dette er et ideal i $F[x]$.
+
+	      \textbf{Merk}: Notasjonen $(f)$ betyr elementene som kan lages ved å multiplisere med
+	      elementet $f$.
+\end{enumerate}
+
+\begin{definition}{Faktorring}{}
+	La $R$ være en kommutativ ring, $I\subseteq R$ et ideal. Da har vi at faktorringen $R/I$ er gitt
+	ved:
+	\begin{enumerate}
+		\item Elementene i $R/I$ er restklassene $a+I$ for $a\in R$
+		\item Vi har at
+		      \begin{align}
+			      (a+I)+(b+I) & =(a+b)+I \\
+			      (a+I)(b+I)  & =ab+I
+		      \end{align}
+		      for alle $a,b\in R$.
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem*}{}{}
+	Operasjonene definert i definisjonen over er veldefinerte.
+\end{theorem*}
+
+\textbf{Merk}:
+Dersom vi har at $\phi: R\ra S$ er en ringhomomorfi med kjerne
+$\ker\phi=\cb{\alpha\in R\mid\phi(\alpha)=0}$, så har vi at:
+\begin{enumerate}
+	\item $\ker \phi$ er et ideal i $R$:
+	      \begin{enumerate}
+		      \item $a,b\in \ker \phi \implies a-b\in \ker \phi$
+		      \item $a\in\ker\phi, r\in R\implies ra\in \ker\phi$
+	      \end{enumerate}
+	\item Vi kan lage faktorringen $R/\ker\phi$ fra første merknad.
+	\item Vi har at $\phi[R]=\cb{\phi(\alpha)\mid\alpha\in R}$ er en underring av $S$
+\end{enumerate}
+
+\begin{theorem*}{26.17 (Fundamentalteoremet for ringhomomorfier)}{}
+	La $\phi: R\ra S$ være en ringhomomorfi og $R$ en kommutativ ring med $I=\ker \phi$. Da er
+	funksjonen
+	\begin{align}
+		\mu: R/I & \ra \phi[R]     \\
+		a+I      & \mapsto \phi(n)
+	\end{align}
+	en ringisomorfi, altså en ringhomomorfi som er injektiv og surjektiv.
+\end{theorem*}
+
+\textbf{Strategi}: Dersom vi har et ideal $I\subset R$, så kan vi "finne" faktorringen $R/I$,
+altså å finne en enklere ring som er isomorf, ved å bruke følgende strategi:
+\begin{enumerate}
+	\item Finn en ring $S$ og en surjektiv ringhomomorfi $\phi: R\ra S$ med $\ker\phi=I$
+	\item Fra fundamentalteoremet for ringhomomorfier har vi da at $R/I\cong S$
+\end{enumerate}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+  \item La $R=\mathbb{Z}$ og $I=(n)=n \mathbb{Z}$. Finn $\mathbb{Z}/I$.
+
+    Dersom vi følger stegene fra strategien over, så ser vi at vi må finne en surjektiv
+    ringhomomorfi $\phi: \mathbb{Z}\ra S$ med $\ker\phi=I$. La oss prøve med 
+    $S=(\mathbb{Z}_n,+_n,\cdot_n)$, hvor vi definerer funksjonen
+    \begin{align}
+      \phi: \mathbb{Z}&\ra \mathbb{Z}_n \\
+      a&\mapsto a\pmod n
+    \end{align}
+    Dette er en gyldig ringhomomorfi, fordi
+    \begin{align}
+      \phi(a+b)&=\phi(n)+_n\phi(b) \\
+      \phi(ab)&=\phi(a)\cdot_n\phi(b)
+    \end{align}
+    Videre så er $\phi$ surjektiv med $\ker\phi=I$. Dermed er altså 
+    $\mathbb{Z}/ n \mathbb{Z}\cong \mathbb{Z}_n$
+  \item Se på $\phi: \mathbb{R}[x]\ra \mathbb{C}$ gitt ved $\phi(f)=f(i)$, altså funksjonen som
+    sender $a_nx^n+\dots+a_1x+a_0\mapsto a_n(i)^n+\dots+a_1i+a_0$. Da er $\phi$ en ringhomomorfi,
+    fordi $\phi(f+g)=(f+g)(i)=f(i)+g(i)$ og $\phi(fg)=(fg)(i)=f(i)\cdot g(i)$.
+
+    Merk at dersom $z=a+bi$ sa vil $\phi(bx+a)=z$, noe som betyr at $\phi$ er surjektiv. Videre har
+    vi at $\ker\phi=\cb{f\in \mathbb{R}[x]\mid\phi(f)=0}=\cb{f\in \mathbb{R}[x]\mid f(i)=0}$. Vi 
+    har i alle fall at $x^2+1$ er et element i denne mengden. 
+
+    Vis at $\ker\phi=(x^2+1)g(x)\forall g(x)\in \mathbb{R}[x]$. (Kan bruke divisjonsalgoritmen)
+\end{enumerate}
+

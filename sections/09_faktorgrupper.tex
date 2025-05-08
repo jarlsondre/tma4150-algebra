@@ -1,0 +1,301 @@
+\section{Faktorgrupper}
+
+\textbf{Mål}: For en gruppe $G$ og visse undergrupper $H\leq G$ så vil vi lage en ny gruppe
+$G/H$ hvor elementene i $G/H$ er restklassene til $H$ i $G$.
+
+\begin{definition}{Normal Undergruppe}{}
+	Vi kaller en undergruppe $H\leq G$ \textbf{normal} dersom $gH=Hg\ \forall g\in G$.
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item $H=\cb{e}\implies gH=\cb{g}=Hg$ for alle $g\in G$, så her er $H$ normal.
+	\item Dersom $G$ er abelsk så er $H\leq G$ automatisk normal.
+	\item La $G=S_3$ tolket som symmetrier på et triangel,
+	      $\cb{\rho_0, \rho_1, \rho_2, \mu_1, \mu_2, \mu_3}$. Vi har tidligere sett at
+	      $H=\cb{\rho_0, \rho_1, \rho_2}$ er en undergruppe. Vi har at $\rho_i H=H=H\rho_i$ siden
+	      $\rho_i\in H$.
+
+	      Vis at $\mu_i H=H\mu_i$.
+
+	      Altså har vi at $H\leq G$ er en normal undergruppe.
+
+	\item La oss fortsatt se på $S_3$, men sett nå $H=\cb{\rho_0, \mu_1}$. Da har vi at
+	      $\rho_1 H=\cb{\rho_1, \mu_3}$, men at $H\rho_1 =\cb{\rho_1, \mu_2}$. Altså er ikke $H$
+	      normal i dette tilfellet.
+\end{enumerate}
+
+\begin{theorem*}{14.12}{}
+	Følgende er ekvivalent for $H\leq G$:
+	\begin{enumerate}
+		\item $H$ er normal
+		\item $gHg^{-1}\ \forall g\in G$, hvor $gHg^{-1}=\cb{ghg^{-1}\mid h\in H}$
+		\item $ghg^{-1}\in H\ \forall h\in H, g\in G$
+	\end{enumerate}
+\end{theorem*}
+
+Fra tidligere så har vi:
+\begin{enumerate}
+	\item $g\in G$
+	\item $gH=H\iff g\in H$
+	\item $g_1H\cap g_2H\neq\emptyset\iff g_1H=g_2H\iff g_1^{-1}g_2\in H\iff g_2^{-1}g_1\in H\iff g_2\in g_1 H$
+\end{enumerate}
+
+\textbf{Eksempel}: La $G=S_3$. Da ser vi at
+\begin{enumerate}
+	\item $H=\cb{\rho_0, \rho_1, \rho_2}\implies \rho_1H=H$ og $\mu_i H=\cb{\mu_1, \mu_2, \mu_3}$
+	\item La $H=\cb{\rho_1, \mu_1}$. Da ser vi at $\rho_1 H=\cb{\rho_1, \mu_3}$, altså at
+	      $\mu_3\in \rho_1 H$, som må bety at $\rho_1 H=\mu_1 H$ (siden de enten er helt disjunkte
+	      eller helt like).
+\end{enumerate}
+
+\begin{theorem*}{14.14 og korollar 14.5}{}
+	Anta at $H\leq G$ er normal og la $G/H$ være mengden av restklasser til $H$ i $G$. For
+	$g_1H$ og $g_2H$ i $G/H$, definer
+	\begin{align}
+		(g_1H)(g_2H)=(g_1g_2)H\in G/H
+	\end{align}
+	Dette er en binæroperasjon på $G/H$, som blir en gruppe sammen med denne.
+\end{theorem*}
+
+\textbf{Bevis}: Må vise at binæroperasjonen er veldefinert i følgende forstand: La
+$g_1'\in g_1H$. Da vet vi at $g_1H=g_1'H$. Tilsvarende har vi at for $g_2'\in g_2H$ er
+$g_2H=g_2'H$. Må vise
+\begin{align}
+	(g_1g_2)H=(g_1'g_2')H
+\end{align}
+Med andre ord så må vi vise at dersom to elementer i domenet er like så må de også ende opp
+på samme sted i ko-domenet.
+
+Siden $(g_1H)(g_2H)=(g_1'H)(g_2'H)$, så kan vi ta et element $g_1'g_2'h\in (g_1'g_2')H$. Siden
+$g_1'\in g_1H$ og $g_2'\in g_2H$, så finnes $h_1, h_2\in H$ slik at $g_1'=g_1h_1$ og
+$g_2'=g_2h_2$. Da har vi at
+\begin{align}
+	g_1'g_2'h & = (g_1h_1)(g_2h_2)h          \\
+	          & = g_1(e)h_1g_2h_2h           \\
+	          & = g_1(g_2g_2^{-1})h_1g_2h_2h \\
+	          & = g_1g_2(g_2^{-1}h_1g_2)h_2h
+\end{align}
+Husk at siden $H$ er normal og $h_1\in H$, så må $g_2^{-1}h_1g_2\in H$. Dermed kan vi skrive
+$\widetilde h := g_2^{-1}h_1g_2$. Videre har vi at $\widetilde{h}h_2h\in H$ siden $H$ er lukket.
+Dermed får vi altså
+\begin{align}
+	g_1'g_2'h & = g_1g_2\widetilde{h}h_2h \in (g_1g_2)H
+\end{align}
+Derfor har vi at $(g_1'g_2')H\subseteq (g_1g_2)H$. Vi kan gjøre tilsvarende argument andre vei og
+få $(g_1g_2)H\subseteq (g_1'g_2')H$, som tilsammen må bety at $(g_1g_2)H=(g_1'g_2')H$, som var
+det vi ville vise. Dermed har vi vist at operatoren over er veldefinert.
+
+La oss nå vise at dette blir en gruppe.
+\begin{enumerate}[label=$\mathscr{G}$\arabic*)]
+	\item Assosiativitet:
+	      \begin{align}
+		      g_1H\sb{(g_2H)(g_3H)} & = g_1H((g_2g_3)H)       \\
+		                            & = g_1(g_2g_3)H          \\
+		                            & = (g_1g_2)g_3H          \\
+		                            & = \dots                 \\
+		                            & = \sb{(g_1H)(g_2H)}g_3H
+	      \end{align}
+	\item Identitet: Vi har at $eH=H$ er identitetselementet:
+	      \begin{align}
+		      (eH)(gH)=(eg)H=gH=(ge)H=(gH)(eH)\ \forall g\in G
+	      \end{align}
+	\item Invers: Vi har at $(gH)^{-1}=g^{-1}H$:
+	      \begin{align}
+		      (gH)(g^{-1}H)=(gg^{-1})H=eH=(g^{-1}g)H=(g^{-1}H)(gH)
+	      \end{align}
+\end{enumerate}
+
+\begin{definition}{Faktorgruppe/Kvotientgruppe}{}
+	Dersom $G$ er en gruppe og $H$ er en normal undergruppe så kaller vi $G/H$ en
+	\textbf{faktorgruppe} eller \textbf{kvotientgruppe}.
+\end{definition}
+
+\textbf{Merk}:
+\begin{enumerate}
+	\item Vi brukte at $H\leq G$ er normal for å få at binæroperasjonen er veldefinert.
+	\item binæreoperatoren for faktorgrupper er rett og slett a gange sammen restklasser:
+	      \begin{align}
+		      (g_1H)(g_2H) & = \cb{g_1h_1g_2h_2\mid h_1, h_2\in H}            \\
+		                   & = \cb{g_1g_2g_2^{-1}h_1g_2h_2\mid h_1, h_2\in H} \\
+		                   & = \cb{g_1g_2h\mid h\in H}                        \\
+		                   & = (g_1g_2)H
+	      \end{align}
+\end{enumerate}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item La $G=\mathbb{Z}$ og see på $H=4 \mathbb{Z}$. Vi har at $H$ her er normal siden
+	      $\mathbb{Z}$ er en abelsk gruppe. Den har fire restklasser:
+	      \begin{align}
+		       & 0+4 \mathbb{Z} = 4 \mathbb{Z} \\
+		       & 1+4 \mathbb{Z}                \\
+		       & 2+4 \mathbb{Z}                \\
+		       & 3+4 \mathbb{Z}
+	      \end{align}
+	      som også er de fire elementene i $\mathbb{Z}/4 \mathbb{Z}$. La oss se på addisjon i
+	      $\mathbb{Z}/4 \mathbb{Z}$:
+	      \begin{align}
+		      (1+4 \mathbb{Z}) + (2+4 \mathbb{Z}) & = (1+2)+4 \mathbb{Z} = 3+4 \mathbb{Z}                  \\
+		      (0+4 \mathbb{Z}) + (2+4 \mathbb{Z}) & = (0+2)+4 \mathbb{Z} = 2+4 \mathbb{Z}                  \\
+		      (2+4 \mathbb{Z}) + (2+4 \mathbb{Z}) & = (2+2)+4 \mathbb{Z} = 0+4 \mathbb{Z} = 4 \mathbb{Z}   \\
+		      (3+4 \mathbb{Z}) + (2+4 \mathbb{Z}) & = (3+2)+4 \mathbb{Z} = 5+4 \mathbb{Z} = 1+4 \mathbb{Z} \\
+	      \end{align}
+	      Merk her at $-(2+4 \mathbb{Z}) = 2 + 4 \mathbb{Z}$, altså at dette er inversen siden
+	      $4 \mathbb{Z}$ er identiteten. Vi ser at $\abs{\mathbb{Z}/4 \mathbb{Z}}=4$ og at dette
+	      ligner på $(\mathbb{Z}_4,+_4)$!
+	\item La nå $G=S_3$ hvor vi ser på $H=\cb{\rho_0, \rho_1, \rho_2}$. Vi har allerede sett
+	      at denne er normal. Det finnes to elementer i $S_3/H$:
+	      \begin{itemize}
+		      \item $H=\rho_0 H=\cb{\rho_0, \rho_1, \rho_2}=\rho_1 H=\rho_2 H$
+		      \item $\mu_1 H = \cb{\mu_1, \mu_2, \mu_3}=\mu_2 H=\mu_3 H$
+	      \end{itemize}
+	      Altså har vi at $\abs{S_3/H}=2$ med $\rho_0 H$ som identitetselement og
+	      $(\mu_1 H)(\mu_2 H)= \mu_1^2 H = \rho_0 H$. Dette ligner på $(\mathbb{Z}_2, +_2)$!
+\end{enumerate}
+
+\textbf{Merk}:
+\begin{enumerate}
+	\item Dersom $\phi:G\ra G'$ er en homomorfi så er $\ker\phi$ normal i $G$.
+	\item $\phi[G]:= \cb{\phi(g)\mid g\in G}\leq G'$. Vi har også trivielt at $\phi:G\ra \phi[G]$
+	      er en surjektiv homomorfi.
+\end{enumerate}
+
+Fra dette får vi at dersom $H\leq G$ er normal så kan vi lage følgende homomorfi:
+\begin{align}
+	\Pi : G & \ra G/H    \\
+	g       & \mapsto gH
+\end{align}
+Da ser vi at $\Pi(g_1g_2)=g_1g_2H=(g_1H)(g_2H)=\Pi(g_1)\Pi(g_2)$. Videre har vi at
+\begin{align}
+	\ker\Pi = \cb{g\in G\mid \Pi(g)=eH}=\cb{g\in G\mid g\in H} = H
+\end{align}
+
+\begin{theorem*}{14.11 - Fundamentalteoremet for (gruppe-)homomorfier}{}
+	La $\phi: G\ra G'$ være en homomorfi og $H=\ker\phi$. Da er funksjonen
+	\begin{align}
+		\bar\phi : G/H & \ra \phi[G]     \\
+		gH             & \mapsto \phi(g)
+	\end{align}
+	en veldefinert homomorfi og en isomorfi. Videre har vi at $\phi = \bar\phi \circ \Pi$.
+\end{theorem*}
+
+\textbf{Bevis}:
+\begin{itemize}
+	\item Veldefinert:
+	      \begin{align}
+		      g_1H=g_2H & \implies g_2\in g_1H                                          \\
+		                & \implies g_2=g_1h                                             \\
+		                & \implies \bar\phi(g_2H)=\phi(g_2)=\phi(g_1h)=\phi(g_1)\phi(h)
+		      =\phi(g_1)=\bar\phi(g_1)
+	      \end{align}
+	\item Homomorfi:
+	      \begin{align}
+		      \bar\phi((g_1H)(g_2H)) & = \bar\phi((g_1g_2)H)          \\
+		                             & = \phi(g_1g_2)                 \\
+		                             & = \phi(g_1)\phi(g_2)           \\
+		                             & = \bar\phi(g_1H)\bar\phi(g_2H)
+	      \end{align}
+	\item Bijektiv: Vis
+	\item Kommutativt diagram:
+	      \begin{align}
+		      (\bar\phi \circ \Pi)(g) & = \bar\phi(\Pi(g)) \\
+		                              & = \bar\phi(gH)     \\
+		                              & = \phi(g)
+	      \end{align}
+	      som var det vi ville vise. \qed
+\end{itemize}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item Se på $\phi: \mathbb{Z}\ra \mathbb{Z}_4$ med $n\mapsto n\pmod{4}$. Dette er en homomorfi.
+	      $\phi$ er surjektiv og $\ker\phi=\cb{n\in \mathbb{Z}\mid n \equiv 0 \pmod{4}}=4 \mathbb{Z}$.
+	      Da følger det fra teoremet over at $\mathbb{Z}/4 \mathbb{Z} \ra \mathbb{Z}_4$ er en isomorfi
+	      ved $\bar\phi$.
+	\item Se på $\phi: \text{GL}(n, \mathbb{R})\ra \mathbb{R}^*$ ved $\phi(M)=\det M$. Dette er en
+	      homomorfi som er surjektiv med $\ker\phi=\text{SL}(n, \mathbb{R})$. Så
+	      $\bar\phi: \text{GL}(n, \mathbb{R})/\text{SL}(n, \mathbb{R})\ra \mathbb{R}^*$ er en
+	      isomorfi.
+	\item Se på
+	      \begin{align}
+		      \phi:S_n & \ra \mathbb{Z}_2                                                                \\
+		      \sigma   & \mapsto \begin{cases}0 & \sigma\text{ like}\\1 & \sigma \text{ odde}\end{cases}
+	      \end{align}
+	      Da er $\phi$ en surjektiv homomorfi og $\ker\phi=A_n$. Så $S_n/A_n\ra \mathbb{Z}_2$ er
+	      en isomorfi.
+	\item Vi ser at $G/\cb{e}\cong G$ med $\phi(g)=g$ og $G/G\cong \cb{e}$ med $\phi(g)=e$.
+\end{enumerate}
+
+\textbf{Strategi for å vise at $G/H$ er isomorf med en gruppe $G'$}:
+\begin{enumerate}
+	\item Finn en surjektiv homomorfi $\phi: G\ra G'$ med $\ker\phi=H$
+	\item Da gir funtamentalteoremet oss at $G/H\ra G'$ er en isomorfi siden $\phi[G]=G'$.
+\end{enumerate}
+
+\textbf{Eksempel - Eksamen Sommer 2023, oppgave 4}:
+La $G$ være en endelig gruppe og $H_1, H_2\leq G$ normale undergrupper.
+\begin{enumerate}[label=\alph*)]
+	\item La $\phi: G\ra G/H_1\times G/H_2$ med $\phi(g)=(gH_1,gH_2)$. Vis at $\phi$ er en homomorfi.
+
+	      Løsning:
+	      \begin{align}
+		      \phi(g_1g_2) & = (g_1g_2H_1, g_1g_2H_2)              \\
+		                   & = ((g_1H_1)(g_2H_1),(g_1H_2)(g_2H_2)) \\
+		                   & = (g_1H_1,g_1H_2)(g_2H_1,g_2H_2)      \\
+		                   & = \phi(g_1)\phi(g_2)
+	      \end{align}
+	      Så $\phi$ er en homomorfi.
+	\item Finn en injektiv homomorfi
+	      \begin{align}
+		      G/(H_1\cap H_2)\ra G/H_1\times G/H_2
+	      \end{align}
+	      og vis at denne er en isomorfi hvis og bare hvis
+	      \begin{align}
+		      \frac{\abs{H_1}\abs{H_2}}{\abs{H_1\cap H_2}} = \abs{G}
+	      \end{align}
+
+	      Løsning:
+        \begin{align}
+          \ker\phi &= \cb{g\in G\mid \phi(g) = e} \\
+                   &= \cb{g\in G\mid \phi(g)=(H_1, H_2)} \\
+                   &= \cb{g\in G\mid g\in H_1 \wedge g\in H_2} \\
+                   &= \cb{g\in G\mid g\in H_1\cap H_2} \\
+                   &= H_1\cap H_2
+        \end{align}
+        Fra fundamentalteoremet har vi da at $\bar\phi: G/H_1\cap H_2 \ra \phi[G]$ er en
+        isomorfi. Men merk at $\phi[G]\subseteq G/H_1 \times G/H_2$, så vi kan ikke garantere
+        at $\bar\phi: G/H_1\cap H_2 \ra G/H_1\times G/H_2$ er surjektiv. Den må likevel
+        være injektiv, siden isomorfien er det. Vi har at
+        \begin{align}
+          \phi \text{ surjektiv} &\iff \abs{G/H_1\cap H_2} = \abs{G/H_1\times G/H_2} \\
+                                 &\iff \frac{\abs{G}}{\abs{H_1\cap H_2}} 
+                                 =\frac{\abs{G}}{\abs{H_1}}\cdot \frac{\abs{G}}{\abs{H_2}} \\
+                                 &\iff \frac{\abs{H_1}\abs{H_2}}{\abs{H_1\cap H_2}}
+                                 = \frac{\abs{G}^2}{\abs{G}} = \abs{G} \qed
+        \end{align}
+\end{enumerate}
+
+\begin{definition}{Simpel}{}
+  Vi sier at en gruppe $G$ er \textbf{simpel} dersom det ikke finnes en normal undergruppe $H$ 
+  slik at 
+  \begin{align}
+    \cb{e}<H<G
+  \end{align}
+\end{definition}
+
+\textbf{Eksempel}: Dersom $\abs{G}=p$ hvor $p$ er et primtall så vet vi fra lagrange at 
+$G$ må være simpel, siden det ikke kan finnes noen undergrupper $H$ med $\cb{e}<H<G$. 
+
+\begin{theorem*}{15.15}{}
+ $A_n$ er simpel når $n\geq 5$. 
+\end{theorem*}
+
+\begin{theorem*}{Klassifisering av endelige simple grupper}{}
+ La $G$ være en endelig, simpel gruppe. Da er den isomorf med en av følgende:
+ \begin{enumerate}
+   \item $\mathbb{Z}_p$ hvor $p$ er et primtall
+   \item $A_n$ når $n\geq 5$
+   \item En simpel gruppe av Lie-type
+   \item En av de 26 sporadiske gruppene
+ \end{enumerate}
+\end{theorem*}

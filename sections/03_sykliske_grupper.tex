@@ -1,0 +1,132 @@
+\section{Sykliske Grupper}
+
+\textbf{Notasjon}: Dersom $G$ er en gruppe, $a \in G$ og vi bruker multiplikativ
+notasjon, så skriver vi $\inner{a} = \cb{a^t\mid t\in \mathbb{Z}}$.
+
+\begin{theorem*}{5.17}{}
+	La $G$ være en gruppe og $a \in G$. Da er $\inner{a}$ en undergruppe av $G$.
+\end{theorem*}
+\textbf{Bevis}: Vi har at $\inner{a} \neq \emptyset$ og for $a^m, a^n \in \inner{a}$
+så er $a^m(a^n)^{-1} = a^ma^{-n} = a^{m-n} \in \inner{a}$. Dermed har vi fra Teorem
+5.14 at $\inner{a} \leq G$. \qed
+
+\begin{definition}{Syklisk Undergruppe}{}
+	Vi kaller $\inner{a}$ den \textbf{sykliske undergruppen} av $G$ generert av $a$, og
+	vi sier at $G$ er \textbf{syklisk} dersom det finnes en $a \in G$ slik at
+	$G = \inner{a}$.
+\end{definition}
+
+\textbf{Merk}:
+\begin{enumerate}
+	\item En syklisk gruppe kan ha flere generatorer
+	\item $\abs{\inner{a}}$ kan være endelig, f.eks. at $a^s = a^t$ med $s \neq t$.
+\end{enumerate}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item 1 og -1 er generatorer i $\mathbb{Z}$, så $\mathbb{Z}$ er syklisk.
+	\item For $\mathbb{Z}_9$ så har vi at
+	      \begin{itemize}
+		      \item $\inner{3} = \cb{0, 3, 6} = \inner{6}$
+		      \item $\inner{0} = \cb{0}$
+		      \item $\inner{1} = \inner{2} = \inner{4} = \inner{5} = \inner{7} = \inner{8}$
+	      \end{itemize}
+	      Vi ser at $\inner{a} = \mathbb{Z}_9 \iff \gcd(a, 9) = 1$
+	\item På øving: $a \in \mathbb{Z}_n$ er en generator $\iff \gcd (n, 1) = 1$
+	\item La $U=\cb{z\in\mathbb{C}\mid \abs{z} = 1}$. Da er
+	      $\inner{i} = \cb{i, 1, -1, -i} = U_4$.
+\end{enumerate}
+
+\begin{definition}{Ordenen til et gruppeelement}{}
+	La $G$ være en gruppe og $a \in G$. Da sier vi at \textbf{ordenen} til $a$ er
+	$\abs{\inner{a}}$.
+\end{definition}
+
+\textbf{Eksempel}: Vi har sett på $\mathbb{Z}_9$. Der så vi at
+$\inner{3} = \inner{6} = \cb{0, 3, 6}$. Dermed har vi at 3 og 6 har orden 3.
+
+\begin{theorem*}{6.1}{}
+	La $G$ være en gruppe. Hvis $G$ er syklisk, så er $G$ abelsk.
+\end{theorem*}
+
+\textbf{Bevis}: Hvis $G = \inner{a}$, altså syklisk, så kan vi skrive alle elementer
+i $G$ som en potens av $a$. La $x, y \in G$. Da kan vi skrive $x = a^n$ og $y = a^m$.
+Dermed har vi at $xy = a^na^m = a^{n+m} = a^{m+n} = a^ma^n = yx$. Altså må $G$ være
+abelsk. \qed
+
+
+\begin{theorem*}{}{}
+	La $G$ være en gruppe og $H \leq G$ en undergruppe. Da er $H$ syklisk.
+\end{theorem*}
+
+\textbf{Bevis}:
+Dersom $H = \cb{e}$, så er $H$ trivielt syklisk, så la oss derfor anta at $H$ ikke
+er triviell. La $a \in G$ med $G = \inner{a}$, altså at $a$ er en generator av $G$.
+Siden $H \neq \cb{e}$, så vil det finnes $a^n \in H$ med $n \neq 0$. Siden $H$ er en
+undergruppe og derfor også en gruppe, så må også $a^{-n} = (a^n)^{-1} \in H$. Med andre
+ord så vil ikke mengden $I=\cb{n \in \mathbb{N}\mid a^n \in H}$ være tom, altså
+$I \neq \emptyset$. Videre må det derfor finnes et minste element i $I$, $n_0$. Vi
+skal se at $a^{n_0}$ kommer til å generere $H$.
+
+Siden $a^{n_0} \in H$, så vil $\inner{a^{n_0}} \leq H$. Se nå på et tilfeldig
+element $a^m \in H$. Fra divisjonsalgoritmen har vi at $m = qn_0 + r$ for
+$0 \leq r \leq n_0-1$. Dette betyr også at $r = m - qn_0$. Merk at
+$a^{qn_0} = (a^{n_0})^q \in H$ siden $a^{n_0}\in H$, så $a^{-qn_0}\in H$ også. I
+tillegg har vi at $a^r=a^{m-qn_0}=a^ma^{-qn_0}\in H$.
+
+Dersom $r > 0$ så kan ikke $a^r \in H$, fordi $r<n_0$ og vi har antatt at $n_0$ er
+den minste. Så vi har at $r = 0$, men dette betyr at $m = qn_0$, som igjen betyr at
+$a^{n_0}$ genererer $H$, som var det vi ville vise.\qed
+
+\begin{theorem*}{(Korollar) 6.7}{}
+	Alle undergrupper av $\mathbb{Z}$ er på formen
+	$m \mathbb{Z} = \cb{\dots, -2m, -m, 0, m, 2m, \dots}$.
+\end{theorem*}
+
+\textbf{Vis følgende utsagn}:
+\begin{enumerate}
+	\item Dersom $p\in \mathbb{N}$ er et primtall så vil $\mathbb{Z}_p$ kun ha to
+	      undergrupper, $\cb{0}$ og $\mathbb{Z}_p$.
+	\item La $m, n \in \mathbb{Z}$ og definer $H = \cb{am + bn\mid a, b \in \mathbb{Z}}$.
+	      Da vil $H \leq Z$ og det vil finnes $d \in \mathbb{Z}$ med $H = \inner{d}$. Vis
+	      at $d = \gcd(m, n)$ er en gyldig kandidat.
+	\item Vi har at $a\in \mathbb{Z}_n$ er en generator hvis og bare hvis $\gcd(a,n)=1$.
+	      Derfor kan vi si at $\phi(n) = \text{ antall generatorer i }\mathbb{Z}_n$.
+	      (Hint: $\gcd(a, b) = 1 \iff \exists r, s \in \mathbb{Z} : ra + sb = 1$)
+\end{enumerate}
+
+\begin{theorem*}{6.10}{}
+	La $G$ være en gruppe. Dersom $G$ er syklisk så har vi følgende:
+	\begin{itemize}
+		\item $\abs{G} = \infty \implies G$ er isomorf med $\mathbb{Z}$.
+		\item $\abs{G} = n \implies G$ er isomorf med $\mathbb{Z}_n$.
+	\end{itemize}
+\end{theorem*}
+
+\textbf{Eksempel}:
+Se på gruppen $U_4 = \cb{z\in\mathbb{C}\mid z^4=1} = \cb{\pm 1, \pm i}$ med
+multiplikasjon som binæroperator. Siden denne er syklisk (med $\pm i$ som generator)
+og $\abs{U_4} = 4$, så må $(U_4, \cdot) \cong (\mathbb{Z}_4, +_4)$. En slik isomorfi
+er gitt ved
+\begin{align}
+	f: U_4 & \ra \mathbb{Z}_4 \\
+	i^n    & \mapsto n
+\end{align}
+Vis at $f$ er en isomorfi ved å vise at den er bijektiv og homomorf.
+
+\begin{theorem*}{6.14}{}
+	La $G$ være en gruppe generert av $a$ med $\abs{G} = n$ og la $a^t \in G$ være et
+	vilkårlig element. Da er ordenen til $a^t$ gitt ved
+	\begin{align}
+		\abs{\inner{a^t}} & = \frac{n}{\gcd{t, n}}
+	\end{align}
+	Videre så gjelder $\inner{a^t} = \inner{a^s} \iff \gcd(n, t) = \gcd(n, s)$.
+\end{theorem*}
+
+\begin{theorem*}{(Korollar) 6.16}{}
+  La $G$ være en gruppe. Dersom $G$ er syklisk av orden $n$ og $a^t \in G$ så har vi
+  at 
+  \begin{align}
+    \inner{a^t} = G \iff \gcd(n, t) = 1
+  \end{align}
+\end{theorem*}

@@ -1,0 +1,200 @@
+\section{Grupper}
+
+\begin{definition}{Binæroperasjon}{}
+	La $S$ være en mengde. En \textbf{binæroperasjon} på $S$ er da definert som en funksjon
+	$*: S\times S \ra S$.
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item La $S = \mathbb{Z}$ og $* = \text{addisjon}$. Da er $*$ en binæroperasjon
+	      på $S$.
+	\item La $S = \mathbb{Z}$ og $* = \text{multiplikasjon}$. Da er $*$ en binæroperasjon.
+	\item Et moteksempel: La $S = \mathbb{N}$ og $* = \text{divisjon}$. Da er $*$ ikke
+	      en gyldig binæroperasjon siden det finnes $a, b \in \mathbb{N}$ slik at
+	      $a * b = \frac{a}{b} \not \in \mathbb{N}$.
+	\item La $S = \{ \text{Alle } m\times n \text{ matriser over }\mathbb{R}\}$ og la
+	      $*$ være matriseaddisjon.
+	\item La $S = \{ \text{Alle } m\times n \text{ matriser over }\mathbb{R}\}$ og la
+	      $*$ være matrisemultiplikasjon.
+	\item La $S = \mathbb{R}$ og definer $a*b = \pi \ \forall a,b \in \mathbb{R}$. Da
+	      er $*$ en gyldig binæroperasjon.
+	\item La
+	      \begin{align}
+		      S = C\left( \left[0, 1\right] \right) =
+		      \left\{f: [0, 1]\ra \mathbb{R}\mid f \text{ er en kontinuerlig funksjon}\right\}
+	      \end{align}
+	      og la $*$ være definert som addisjon av funksjoner, altså at
+	      \begin{align}
+		      (f + g)(x) = f(x) + g(x)\ \forall x.
+	      \end{align}
+	      Da er $*$ en gyldig binæroperasjon.
+\end{enumerate}
+
+\begin{definition}{Gruppe}{}
+	En \textbf{gruppe}, $(G, *)$ er en ikke-tom mengde $G$ sammen med en binæroperasjon
+	$*$ på $G$ slik at følgende krav er tilfredsstilte:
+	\begin{enumerate}[label=$\mathscr{G}$\arabic*)]
+		\item $(g*h)*k = g*(h*k)\ \forall g, h, k \in G$. (Assosiativitet)
+		\item Det finnes en $e \in G$ med $e*g = g*e = e\ \forall g\in G$. (Identitet)
+		\item For alle $g\in G$ så finnes det en $g'\in G$ med $g*g'=g'*g = e$. (Invers)
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}{Abelsk Gruppe}{}
+	Dersom en gruppe $(G, *)$ har egenskapen at $g*h = h*g\ \forall g,h \in G$, så
+	kaller vi gruppen \textbf{abelsk}. Denne egenskapen kalles også kommutativitet.
+\end{definition}
+
+\textbf{Eksempler}:
+\begin{enumerate}
+	\item $(\mathbb{Z}, +)$ er en abelsk gruppe.
+	\item $(\mathbb{Z}, *)$ er "nesten" en gruppe, ettersom at $\mathscr{G}1$ og
+	      $\mathscr{G}2$ holder, men ikke $\mathscr{G}3$.
+	\item $G = \cb{1, -1}$, $* = \text{multiplikasjon}$ er en abelsk gruppe.
+	      \begin{enumerate}[label=$\mathscr{G}$\arabic*)]
+		      \item Denne holder fordi det er kjent at multiplikasjon er assosiativt.
+		      \item Denne holder med $e = 1$.
+		      \item Denne ser vi holder ved $1 * 1 = 1$ og $(-1) * (-1) = 1$.
+	      \end{enumerate}
+	      Videre er det kjent at multiplikasjon er kommutativt. Dermed er dette en abelsk
+	      gruppe.
+	\item Vi har at $(\mathbb{Q}, +), (\mathbb{R}, +)$ og $(\mathbb{C}, +)$ er abelske
+	      grupper.
+	\item $(\mathbb{N}, +)$ er ikke en gruppe ettersom det ikke finnes inverser for
+	      alle tall.
+	\item $(C\nb{\sb{0, 1}}, +)$ er en abelsk gruppe med $e = 0$.
+	\item La $G = \mathcal{M}_2(\mathbb{R})$ og $*$ være matriseaddisjon. Da er
+	      $(G, *)$ en abelsk gruppe.
+	\item La
+	      \begin{align}
+		      G = \text{GL}(2,\mathbb{R}) =
+		      \cb{A \in \mathcal{M}_2(\mathbb{R})\mid \det A \neq 0}
+	      \end{align}
+	      og definer $*$ som matrisemultiplikasjon. Da er $(G, *)$ en gruppe, men den er ikke
+	      abelsk.
+	\item La
+	      \begin{align}
+		      G = \text{SL}(2,\mathbb{R}) =
+		      \cb{A \in \mathcal{M}_2(\mathbb{R})\mid \det A = 1}
+	      \end{align}
+	      og definer $*$ som matrisemultiplikasjon. Da er $(G, *)$ en gruppe, men den er ikke
+	      abelsk.
+	\item $\mathbb{Q}\setminus \cb{0}$ med $*$ definert som multiplikasjon er en abelsk
+	      gruppe.
+	\item La $U=\cb{z\in\mathbb{C}\mid \abs{z}=1}$ og $*$ være multiplikasjon. Da er
+	      $(U, *)$ en abelsk gruppe.
+	\item La $U_n=\cb{z\in\mathbb{C}\mid z^n = 1}$, altså alle komplekse $n$-te røtter
+	      av tallet 1. Disse kan skrives på formen $e^{\frac{2\pi k}{n}}$ for $k=1,\dots, n$.
+	      Dette, med multiplikasjon, er en endelig abelsk gruppe.
+	\item La $V$ være et vektorrom. Da er $(V, +)$ en abelsk gruppe.
+	\item La $\mathbb{R}^+ = \cb{a\in \mathbb{R}\mid a > 0}$. Da er
+	      $(\mathbb{R}^+, \cdot)$, hvor $\cdot$ er vanlig multiplikasjon, en abelsk gruppe.
+	      Vi kan også lage en ny abelsk gruppe $(\mathbb{R}^+, *)$ ved å definere
+	      $a*b = \frac{ab}{\pi}$.
+\end{enumerate}
+
+\begin{theorem*}{4.15}{} \label{thm:jarl}
+	La $(G, *)$ være en gruppe. Da gjelder følgende:
+	\begin{enumerate}
+		\item $a * b = a * c \implies b = c$
+		\item $b * a = c * a \implies b = c$
+	\end{enumerate}
+\end{theorem*}
+
+\textbf{Bevis}:
+La oss anta at det første punktet gjelder. Da har vi fra $\mathscr{G}3$ at det må
+eksistere $a'\in G$ slik at $a * a' = e$. Dermed får vi at
+\begin{align}
+	b & = e * b = (a' * a) * b = a' * (a * b) = a' * (a * c) \\
+	  & = (a' * a) * c = e * c = c,
+\end{align}
+altså at $b = c$, som var det vi ville vise. Tilsvarende holder for punkt 2. \qed
+
+\begin{theorem*}{4.17}{}
+	La $(G, *)$ være en gruppe. Da gjelder følgende:
+	\begin{enumerate}
+		\item Identiteten $e$ i $\mathscr{G}2$ er unik.
+		\item Inversen $a'$ i $\mathscr{G}3$ er unik.
+	\end{enumerate}
+\end{theorem*}
+\textbf{Bevis}:
+\begin{enumerate}
+	\item La oss anta at $e_1, e_2 \in G$ med $e_i * g = g * e_i = g$ for alle $g\in G$.
+	      Da følger det at $e_1 = e_1 * e_2 = e_2$. \qed
+	\item La $a \in G$ og la oss anta at $a_1, a_2 \in G$ slik at
+	      $a * a_i = a_i * a = e$. Da har vi at
+	      \begin{align}
+		      a_1 = a_1 * e = a_1 * (a * a_2) = (a_1 * a) * a_2 = e * a_2 = a_2,
+	      \end{align}
+	      som var det vi ville vise.\qed
+\end{enumerate}
+
+\subsection{Multiplikasjonstabell}
+La oss anta at $(G, *)$ er en endelig gruppe med $\abs{G} = n$. Da kan man liste opp
+elementene i $G$ i en tabell:
+
+\[
+	\begin{array}{c||cccc}
+		*      & a_1     & a_2     & \cdots & a_n     \\
+		\hline\hline
+		a_1    & a_1*a_1 & a_1*a_2 & \cdots & a_1*a_n \\
+		a_2    & a_2*a_1 & a_2*a_2 & \cdots & a_2*a_n \\
+		\vdots & \vdots  & \vdots  & \ddots & \vdots  \\
+		a_n    & a_n*a_1 & a_n*a_2 & \cdots & a_n*a_n \\
+	\end{array}
+\]
+
+La oss se på noen eksempler på forskjellige tabeller:
+\begin{enumerate}
+	\item $\abs{G} = 1\implies G = \cb{1}$ og $e * e = e$.
+	\item $\abs{G} = 2\implies G = \cb{e, a}$. Da får vi følgende tabell
+	      \[
+		      \begin{array}{c||cc}
+			      * & e & a \\
+			      \hline\hline
+			      e & e & a \\
+			      a & a & e \\
+		      \end{array}
+	      \]
+	      Merk at $a * a = e$ her fordi alle elementer i en gruppe må ha en invers.
+	\item $\abs{G} = 3\implies G = \cb{e, a, b}$. Da får vi følgende tabell:
+	      \[
+		      \begin{array}{c||ccc}
+			      * & e & a & b \\
+			      \hline\hline
+			      e & e & a & b \\
+			      a & a & b & e \\
+			      b & b & e & a \\
+		      \end{array}
+	      \]
+	      Her kan man bruke Teorem 4.15 for å vise at $a*a = b$ og $b*b = a$.
+\end{enumerate}
+
+\begin{definition}{Isomorfe Grupper}{}
+	La $(G, *_G)$ og $(H, *_H)$ være grupper. Da sier vi at de er \textbf{isomorfe}
+	dersom det eksisterer en bijeksjon
+	\begin{align}
+		f: G \ra H
+	\end{align}
+	slik at $f(a *_G b) = f(a) *_H f(b)$ for alle $a, b \in G$.
+\end{definition}
+
+Nå kommer en liste med konvensjoner innenfor algebra:
+\begin{enumerate}
+	\item Binæroperasjonen $*$ betegnes som oftest med $\cdot$ eller $+$. Dersom man
+	      bruker multiplikativ notasjon så skriver man ofte $ab$ for $a\cdot b$.
+	\item $+$ er normalt forbeholdt abelske grupper.
+	\item Identiteten fra $\mathscr{G}2$ betegnes ofte som "1" eller "$e$" med
+	      multiplikativ notasjon og som "0" med additiv notasjon.
+	\item Inversen fra $\mathscr{G}3$ betegnes ofte som $a^{-1}$ med multiplikativ
+	      notasjon og $-a$ med additiv notasjon.
+	\item La $a\in G$. Dersom vi har multiplikativ notasjon så betegner vi normalt
+	      $a^0 = 1$ og $a^n = a\cdots a$ som $a$ ganget med seg selv $n$ ganger. Videre
+	      betegner vi $a^{-n} = a^{-1}\cdots a^{-1}$ som $a^{-1}$ ganget med seg selv $n$
+	      ganger.
+
+	      Dersom vi har additiv notasjon så betegner vi $n\cdot a = a + \dots + a$ som $a$
+	      addert med seg selv $n$ ganger og $-n\cdot a = (-a) + (-a) + \dots + (-1)$ som
+	      $-a$ addert med seg selv $n$ ganger.
+\end{enumerate}
